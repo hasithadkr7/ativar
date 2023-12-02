@@ -1,0 +1,185 @@
+:root {
+  --white: rgba(255, 255, 255, 1);
+  --light-gray: rgba(179, 179, 179, 1);
+  --gray: rgba(85, 85, 85, 1);
+  --black: rgba(34, 34, 34, 1);
+  --blue: rgba(16, 77, 94, 1);
+  --error: rgba(255, 87, 87, 1);
+  --success: rgba(69, 239, 116, 1);
+  --warning: rgba(244, 207, 80, 1);
+
+  font-family: "Raleway";
+  font-size: 18px;
+  font-weight: normal;
+  line-height: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100vh;
+  width: 100%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.input-label {
+  color: var(--gray);
+  font-weight: 700;
+}
+
+.input {
+  font-size: 16px;
+  display: flex;
+  width: 18.75rem !important;
+  height: 2.5rem;
+  padding: 1rem 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+  border-radius: 0.25rem;
+  border: 2px solid var(--light-gray);
+}
+
+.input:focus {
+  border: 1px solid var(--blue);
+}
+
+.input.error {
+  border: 1px solid var(--error);
+}
+
+.input:disabled {
+  background: #f1f1f1;
+}
+
+.btn {
+  color: var(--white);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  min-width: 5.75rem;
+  padding: 0.75rem;
+  flex-shrink: 0;
+  border-radius: 0.25rem;
+}
+
+.btn-primary {
+  background: var(--blue);
+}
+
+.btn-secondary {
+  border: 1px solid var(--blue);
+  background: var(--white);
+}
+
+.nav-container {
+  height: 100%;
+  width: 13.0625rem;
+  flex-shrink: 0;
+  border-right: 1px solid #dcdcdc;
+  padding: 2rem 1.5rem;
+  gap: 3.13rem;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 10.0625rem;
+}
+
+.nav-menu-item {
+  display: flex;
+  height: 2.5rem;
+  padding: 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+  border-radius: 0.25rem;
+  font-weight: 400;
+}
+
+.nav-menu-item.active {
+  background: var(--blue);
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--gray);
+}
+
+.login-background {
+  background:
+    linear-gradient(0deg, #104d5e 0%, #104d5e 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%),
+    url("/images/ginger.jpeg"),
+    lightgray 50% / cover no-repeat;
+  background-blend-mode: overlay, normal, normal;
+}
+
+.login-container {
+  margin: 0 auto;
+  width: 27.275rem;
+  height: 27rem;
+  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  padding: 2.5rem 4rem;
+  background: var(--white);
+}
+
+.login-form>div {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.login-form h1 {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  color: var(--gray);
+  text-align: center;
+  font-family: Raleway;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  white-space: nowrap;
+}
