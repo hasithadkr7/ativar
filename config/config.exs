@@ -7,7 +7,7 @@ config :ativar,
 # Configures the endpoint
 config :ativar, AtivarWeb.Endpoint,
   url: [host: "localhost"],
-  adapter: Phoenix.Endpoint.Cowboy2Adapter,
+  adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: AtivarWeb.ErrorHTML],
     layout: false
