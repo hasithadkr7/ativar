@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :ativar, Ativar.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("POSTGRES_USER", "postgres"),
+  password: System.get_env("POSTGRES_PASSWORD", "postgres"),
   hostname: "localhost",
   database: "ativar_dev",
   stacktrace: true,
