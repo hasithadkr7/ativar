@@ -20,8 +20,10 @@ defmodule AtivarWeb.LoginLive do
       style="display: flex; justify-content: center; align-items: center;"
     >
       <div class="login-container">
+        <img src={~p"/images/logo_vertical.svg"} class="logo" />
+
         <.simple_form :let={f} for={@changeset} action={~p"/login"} class="login-form">
-          <h1 class="title">Boas-vindas novamente!</h1>
+          <h1 class="title">Bem-vindo de volta!</h1>
           <.input
             field={f[:email]}
             type="email"
@@ -30,11 +32,9 @@ defmodule AtivarWeb.LoginLive do
             required
           />
           <.input field={f[:password]} type="password" label="Senha" placeholder="********" required />
-          <:actions>
-            <.button phx-disable-with="Acessando..." type="submit" style="primary">
-              Entrar
-            </.button>
-          </:actions>
+          <.button phx-disable-with="Acessando..." type="submit" style="primary">
+            <Lucideicons.log_in /> Entrar
+          </.button>
         </.simple_form>
       </div>
     </main>

@@ -1,0 +1,21 @@
+<.live_component module={AtivarWeb.DashboardLive.TopMenuComponent} id="top-menu" />
+
+<div class="dashboard">
+  <div class="group-tables">
+    <.live_component
+      module={AtivarWeb.DashboardLive.TableComponent}
+      id="latest-sales"
+      title="Últimas Vendas"
+      data={@streams}
+    />
+
+    <.live_component
+      module={AtivarWeb.DashboardLive.TableComponent}
+      id="latest-invoices"
+      title="Últimos Invoices"
+      data={@streams}
+    />
+  </div>
+
+  <.live_component module={AtivarWeb.DashboardLive.SideMenuComponent} id="side-menu" />
+</div>

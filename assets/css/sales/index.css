@@ -1,0 +1,42 @@
+@import "detail.css";
+@import "invoice.css";
+@import "new_sale.css";
+@import "os.css";
+
+.sales {
+  margin: 1.5rem;
+}
+
+.sales .top-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5.5rem;
+  gap: 2rem;
+
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.sales .top-bar .search-input {
+  display: flex;
+  width: 23.625rem;
+  height: 2.5rem;
+  padding: 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sales .top-bar .group-buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+.sales .top-bar .group-buttons button {
+  height: 2.5rem;
+  padding: 0.75rem;
+  align-items: center;
+}
+
+.sales-table {
+  margin-top: 1.5rem;
+}

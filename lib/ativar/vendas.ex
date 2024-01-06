@@ -28,7 +28,7 @@ defmodule Ativar.Vendas do
   end
 
   def update_registro(registro, attrs) do
-    with {:ok, changeset} = Registro.changeset(registro, attrs),
+    with {:ok, changeset} <- Registro.changeset(registro, attrs),
          {:ok, registro} <- Repo.update(changeset) do
       {:ok, Repo.preload(registro, @relations)}
     end

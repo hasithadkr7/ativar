@@ -1,0 +1,41 @@
+.badge {
+  /* Span */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  position: relative;
+  border-radius: 1000px;
+
+  /* Text inside span */
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Raleway-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.badge-green {
+  background-color: #2aa34c;
+}
+
+.badge-red {
+  background-color: #b82f2f;
+}
+
+.badge-blue {
+  background-color: #176fa1;
+}
+
+.badge-gray {
+  background-color: #797979;
+}
+
+.badge-purple {
+  background-color: #860da4;
+}

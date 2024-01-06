@@ -1,3 +1,15 @@
+@import "components/badge.css";
+@import "components/button.css";
+@import "components/table.css";
+@import "components/search.css";
+
+@import "customers";
+@import "dashboard";
+@import "financial";
+@import "sales";
+
+@import "invoice_document.css";
+
 :root {
   --white: rgba(255, 255, 255, 1);
   --light-gray: rgba(179, 179, 179, 1);
@@ -20,9 +32,11 @@
   box-sizing: border-box;
 }
 
-#app {
+.nav-container {
+  width: 13.0625rem;
   height: 100vh;
-  width: 100%;
+  position: fixed;
+  border: 1px solid #dcdcdc;
 }
 
 .flex-center {
@@ -39,6 +53,7 @@
 
 .input-container {
   display: flex;
+  width: 18.75rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -51,50 +66,42 @@
 }
 
 .input {
-  font-size: 16px;
   display: flex;
-  width: 18.75rem !important;
   height: 2.5rem;
   padding: 1rem 0.75rem;
   align-items: center;
   gap: 0.5rem;
   align-self: stretch;
+
   border-radius: 0.25rem;
   border: 2px solid var(--light-gray);
 }
 
-.input:focus {
+.input:focus,
+.textarea:focus {
   border: 1px solid var(--blue);
 }
 
-.input.error {
+.input.error,
+.textarea.error {
   border: 1px solid var(--error);
 }
 
-.input:disabled {
+.input:disabled,
+.textarea:disabled {
   background: #f1f1f1;
 }
 
-.btn {
-  color: var(--white);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+.textarea {
+  display: flex;
+  height: 7.5rem;
+  padding: 1rem 0.75rem;
+  align-items: flex-start;
   gap: 0.5rem;
-  height: 2.5rem;
-  min-width: 5.75rem;
-  padding: 0.75rem;
-  flex-shrink: 0;
+
   border-radius: 0.25rem;
-}
-
-.btn-primary {
-  background: var(--blue);
-}
-
-.btn-secondary {
-  border: 1px solid var(--blue);
-  background: var(--white);
+  border: 2px solid var(--light-gray);
+  resize: none;
 }
 
 .nav-container {
@@ -136,29 +143,57 @@
   color: var(--gray);
 }
 
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.login-container .logo {
+  width: 9rem;
+  height: 6.5rem;
+  fill: var(--white);
+}
+
 .login-background {
-  background:
-    linear-gradient(0deg, #104d5e 0%, #104d5e 100%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%),
-    url("/images/ginger.jpeg"),
-    lightgray 50% / cover no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(0deg, #104D5E 0%, #104D5E 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%),
+    url("/images/ginger.jpeg"), lightgray 50% / cover no-repeat;
   background-blend-mode: overlay, normal, normal;
 }
 
-.login-container {
-  margin: 0 auto;
-  width: 27.275rem;
-  height: 27rem;
-  gap: 3rem;
-  display: flex;
+.login-form {
+  display: inline-flex;
+  padding: 2.5rem 4rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2.5rem;
+
+  border-radius: 1rem;
+  background: #FFF;
 }
 
-.login-form {
-  padding: 2.5rem 4rem;
-  background: var(--white);
+.login-form h1 {
+  color: var(--gray);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.login-form label {
+  color: var(--gray);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.login-form .btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
 }
 
 .login-form>div {
@@ -166,6 +201,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: 2rem;
 }
 

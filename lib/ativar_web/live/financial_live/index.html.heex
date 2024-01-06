@@ -1,0 +1,27 @@
+<div class="financial-wrapper">
+  <div class="top-bar-wrapper">
+    <.search id="search-financial" name="search-financial" placeholder="Pesquisar" />
+
+    <div class="group-buttons">
+      <.button style="secondary" phx-click="open" phx-target="#modal-filter">
+        <Lucideicons.filter class="icon" /> Filtros
+      </.button>
+
+      <.button style="primary">
+        <Lucideicons.file_up class="icon" /> Relatório
+      </.button>
+
+    </div>      
+  </div>
+
+  <div class="financial-table-wrapper">
+    <.live_component
+      module={AtivarWeb.FinancialLive.TableComponent}
+      id="financial-table"
+      title="Extrato"
+      data={@streams}
+    />
+
+    <.live_component module={AtivarWeb.FinancialLive.SideMenuComponent} id="side-menu" />
+  </div>
+</div>

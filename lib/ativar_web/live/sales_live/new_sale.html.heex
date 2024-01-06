@@ -1,0 +1,372 @@
+<div class="new-sale-wrapper">
+  <div class="top-bar-wrapper">
+    <div class="group-buttons-wrapper">
+      <div class="left-group">
+        <.button style="secondary">
+          <Lucideicons.arrow_left /> Voltar
+        </.button>
+      </div>
+      <div class="right-group">
+         <.button style="primary">
+          <Lucideicons.save /> Gerar Venda
+        </.button>
+      </div>
+    </div>
+  </div>
+
+  <div class="new-sale-title-wrapper">
+    <p class="new-sale-title">Nova Venda</p>
+  </div>
+
+
+  <.simple_form :let={f} for={@changeset} action={~p"/login"} class="new-sale-details-container">
+    <div class="new-sale-details">
+      <div class="text-wrapper">Cadastro</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Cliente Importador" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Produto" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Quantidade" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Incoterm" 
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Documentos ao Exportador" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Termos de Pagamento" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+    
+    <div class="new-sale-details">
+      <div class="text-wrapper">Valores</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Moeda" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Cotação" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Preço por Caixa" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Valor Negociado" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+    
+    <div class="new-sale-details">
+      <div class="text-wrapper">Envio</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Valor Negociado" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Valor Negociado" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Valor Negociado" 
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="select" 
+              multiple={false}
+              prompt="Placeholder"
+              options={[1,2,3]}
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Aeroporto/Porto de Origem" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Cia de Frete e Exportação" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="select" 
+              multiple={false}
+              prompt="Placeholder"
+              options={[1,2,3]}
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Agente de Carga" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+                type="select" 
+                multiple={false}
+                prompt="Placeholder"
+                options={[1,2,3]}
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Frete" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+    
+    <div class="new-sale-details">
+      <div class="text-wrapper">Prazos</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Data de Partida" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Chegada Porto/Aeroporto" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Data de Chegada Destino" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>   
+
+    <hr class="horizontal-divider" />
+    
+    <div class="new-sale-details">
+      <div class="text-wrapper">Pagamento</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Data de Chegada Destino" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Data de Chegada Destino" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Data de Chegada Destino" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="new-sale-details">
+      <div class="text-wrapper">Descrições das Parcelas</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Valor da Parcela 1" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Porcentagem da Parcela" 
+            />
+          </div>
+          <div class="input-data">
+            <.input 
+              type="text" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="Data de Vencimento" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+   
+    <div class="new-sale-details">
+      <div class="text-wrapper">Observações Gerais</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <.input 
+              type="textarea" 
+              id="cliente-importador" 
+              value="" 
+              name="cliente-importador" 
+              errors={%{}} 
+              label="" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </.simple_form>
+</div>

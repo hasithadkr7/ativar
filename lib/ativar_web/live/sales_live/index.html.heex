@@ -1,0 +1,17 @@
+<div class="sales">
+  <div class="top-bar">
+    <.search id="search-sale" name="search-sale" placeholder="Pesquisar" />
+
+    <div class="group-buttons">
+      <.button style="primary">
+        <Lucideicons.package_plus class="icon" /> Nova Venda
+      </.button>
+
+      <.button style="primary">
+        <Lucideicons.file_up class="icon" /> Exportar
+      </.button>
+    </div>
+  </div>
+
+  <.live_component module={AtivarWeb.SalesLive.TableComponent} id="sales" data={@streams} />
+</div>

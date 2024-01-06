@@ -1,0 +1,365 @@
+15:06:46.739 [info] Child {LoggerFileBackend, :general_log} of Supervisor Logger.Backends.Supervisor started
+Pid: #PID<0.114.0>
+Start Call: Logger.Backends.Watcher.start_link({{LoggerFileBackend, :general_log}, {LoggerFileBackend, :general_log}})
+Restart: :transient
+Shutdown: 5000
+Type: :worker
+15:06:46.739 [info] Child Logger.Backends.Supervisor of Supervisor Logger.Backends.Internal started
+Pid: #PID<0.113.0>
+Start Call: Logger.Backends.Supervisor.start_link([{LoggerFileBackend, :general_log}])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+15:06:46.739 [info] Child Logger.Backends.Internal of Supervisor Logger.Supervisor started
+Pid: #PID<0.109.0>
+Start Call: Logger.Backends.Internal.start_link([])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+15:06:46.739 [info] Application logger started at :nonode@nohost
+15:06:49.595 [info] Child :ttb_autostart of Supervisor :runtime_tools_sup started
+Pid: #PID<0.120.0>
+Start Call: :ttb_autostart.start_link()
+Restart: :temporary
+Shutdown: 3000
+Type: :worker
+15:06:49.595 [info] Application runtime_tools started at :nonode@nohost
+15:06:49.598 [info] Application erts started at :nonode@nohost
+15:06:49.598 [info] Application lx_lexical_shared started at :nonode@nohost
+15:06:49.598 [info] Application lx_sourceror started at :nonode@nohost
+15:06:49.598 [info] Application lx_common started at :nonode@nohost
+15:06:49.598 [info] Application lx_elixir_sense started at :nonode@nohost
+15:06:49.598 [info] Application jason started at :nonode@nohost
+15:06:49.598 [info] Application logger_file_backend started at :nonode@nohost
+15:06:49.599 [info] Application lx_path_glob started at :nonode@nohost
+15:06:49.599 [info] Application lx_proto started at :nonode@nohost
+15:06:49.599 [info] Application lx_protocol started at :nonode@nohost
+15:06:49.625 [info] Child LXical.Document.Store of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.135.0>
+Start Call: LXical.Document.Store.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:49.630 [info] Child LXical.Server of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.136.0>
+Start Call: LXical.Server.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:49.630 [info] Child LXical.Server.ProjectSupervisor of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.137.0>
+Start Call: DynamicSupervisor.start_link([name: LXical.Server.ProjectSupervisor, strategy: :one_for_one])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+15:06:49.630 [info] Child LXical.Server.Provider.Queue.Supervisor of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.138.0>
+Start Call: Task.Supervisor.start_link([name: LXical.Server.Provider.Queue.Supervisor])
+Restart: :permanent
+Shutdown: :infinity
+Type: :supervisor
+15:06:49.633 [info] Child LXical.Server.Provider.Queue of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.139.0>
+Start Call: LXical.Server.Provider.Queue.start_link([])
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:49.633 [info] Child LXical.Server.Transport.StdIO of Supervisor LXical.Server.Supervisor started
+Pid: #PID<0.140.0>
+Start Call: LXical.Server.Transport.StdIO.start_link(:standard_io, &LXical.Server.protocol_message/1)
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:49.635 [info] Application lx_server started at :nonode@nohost
+15:06:49.662 [info] Starting project at uri file:///home/douglas/Projects/ativar
+15:06:49.687 [info] Child {LXical.Server.Project.Progress, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.142.0>
+Start Call: LXical.Server.Project.Progress.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:49.696 [info] Child {LXical.RemoteControl.ProjectNodeSupervisor, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.143.0>
+Start Call: LXical.RemoteControl.ProjectNodeSupervisor.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:49.711 [info] Child :erl_epmd of Supervisor :net_sup started
+Pid: #PID<0.146.0>
+Start Call: :erl_epmd.start_link()
+Restart: :permanent
+Shutdown: 2000
+Type: :worker
+15:06:49.714 [info] Child :auth of Supervisor :net_sup started
+Pid: #PID<0.147.0>
+Start Call: :auth.start_link()
+Restart: :permanent
+Shutdown: 2000
+Type: :worker
+15:06:49.719 [info] Child :net_kernel of Supervisor :net_sup started
+Pid: #PID<0.148.0>
+Start Call: :net_kernel.start_link(%{clean_halt: false, name: :"manager-ativar-33043@127.0.0.1", name_domain: :longnames, net_tickintensity: 4, net_ticktime: 60, supervisor: :net_sup_dynamic})
+Restart: :permanent
+Shutdown: 2000
+Type: :worker
+15:06:49.719 [info] Child :net_sup_dynamic of Supervisor :kernel_sup started
+Pid: #PID<0.145.0>
+Start Call: :erl_distribution.start_link(%{clean_halt: false, name: :"manager-ativar-33043@127.0.0.1", name_domain: :longnames, net_tickintensity: 4, net_ticktime: 60, supervisor: :net_sup_dynamic})
+Restart: :permanent
+Shutdown: 1000
+Type: :supervisor
+15:06:50.192 [info] Child {LXical.Server.Project.Node, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.144.0>
+Start Call: LXical.Server.Project.Node.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:50.198 [info] Child {LXical.Server.Project.Diagnostics, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.156.0>
+Start Call: LXical.Server.Project.Diagnostics.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:50.202 [info] Child {LXical.Server.Project.Intelligence, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.157.0>
+Start Call: LXical.Server.Project.Intelligence.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:06:50.203 [info] Lexical Initialized
+15:06:50.203 [info] opened file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/side_menu_component.ex
+15:06:52.444 [info] Compiled ativar in 2.2 seconds
+15:06:54.335 [info] opened file:///home/douglas/Projects/ativar/lib/ativar_web/live/dashboard_live/side_menu_component.ex
+15:07:01.167 [info] Completion for %LXical.Document.Position{line: 1, character: 33, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}
+15:07:03.108 [info] Completion for %LXical.Document.Position{line: 1, character: 23, valid?: true, context_line: {:line, "defmodule AtivarWeb.Fi.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}
+15:07:03.876 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.Fi", metadata: %{}, name: "Fi", summary: ""}]
+15:07:03.879 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.DashboardLive", metadata: %{}, name: "DashboardLive", summary: ""}]
+15:07:03.889 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.DashboardLive", kind: :module, label: "DashboardLive", sort_text: "079_DashboardLive", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/side_menu_component.ex", version: 1, dirty?: true, lines: %Lines<"defmodule AtivarWeb.DashboardLive.SideMenuComponent do..."(46 lines)>, ...>, edits: %LXical.Document.Edit{text: "DashboardLive", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 33, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}}}}]>]
+15:07:03.890 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.Fi", kind: :module, label: "Fi", sort_text: "079_Fi", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/side_menu_component.ex", version: 4, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Fi.SideMenuComponent do..."(46 lines)>, ...>, edits: %LXical.Document.Edit{text: "Fi", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.Fi.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 23, valid?: true, context_line: {:line, "defmodule AtivarWeb.Fi.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}}}}]>]
+15:07:04.326 [info] Completion for %LXical.Document.Position{line: 1, character: 30, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}
+15:07:04.379 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.Financial", metadata: %{}, name: "Financial", summary: ""}]
+15:07:04.383 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.Financial", kind: :module, label: "Financial", sort_text: "079_Financial", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/side_menu_component.ex", version: 11, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Financial.SideMenuComponent do..."(46 lines)>, ...>, edits: %LXical.Document.Edit{text: "Financial", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 30, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.SideMenuComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}}}}]>]
+15:07:06.836 [info] Compiled ativar in 699 ms
+15:07:18.610 [info] opened file:///home/douglas/Projects/ativar/lib/ativar_web/live/dashboard_live/table_component.ex
+15:07:24.536 [info] opened file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex
+15:07:28.292 [info] Completion for %LXical.Document.Position{line: 1, character: 33, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}
+15:07:28.357 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.DashboardLive", metadata: %{}, name: "DashboardLive", summary: ""}]
+15:07:28.362 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.DashboardLive", kind: :module, label: "DashboardLive", sort_text: "079_DashboardLive", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex", version: 1, dirty?: true, lines: %Lines<"defmodule AtivarWeb.DashboardLive.TableComponent do..."(46 lines)>, ...>, edits: %LXical.Document.Edit{text: "DashboardLive", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 33, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}}}}]>]
+15:07:30.001 [info] Completion for %LXical.Document.Position{line: 1, character: 23, valid?: true, context_line: {:line, "defmodule AtivarWeb.FD.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}
+15:07:30.065 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.FD", metadata: %{}, name: "FD", summary: ""}]
+15:07:30.070 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.FD", kind: :module, label: "FD", sort_text: "079_FD", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex", version: 4, dirty?: true, lines: %Lines<"defmodule AtivarWeb.FD.TableComponent do..."(46 lines)>, ...>, edits: %LXical.Document.Edit{text: "FD", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.FD.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 23, valid?: true, context_line: {:line, "defmodule AtivarWeb.FD.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}}}}]>]
+15:07:30.702 [info] Completion for %LXical.Document.Position{line: 1, character: 23, valid?: true, context_line: {:line, "defmodule AtivarWeb.Fi.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}
+15:07:30.733 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.Fi", metadata: %{}, name: "Fi", summary: ""}]
+15:07:30.737 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.Fi", kind: :module, label: "Fi", sort_text: "079_Fi", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex", version: 6, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Fi.TableComponent do..."(46 lines)>, ...>, edits: %LXical.Document.Edit{text: "Fi", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.Fi.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 23, valid?: true, context_line: {:line, "defmodule AtivarWeb.Fi.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}}}}]>]
+15:07:31.653 [info] Completion for %LXical.Document.Position{line: 1, character: 30, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}
+15:07:31.710 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.Financial", metadata: %{}, name: "Financial", summary: ""}]
+15:07:31.715 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.Financial", kind: :module, label: "Financial", sort_text: "079_Financial", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex", version: 13, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Financial.TableComponent do..."(46 lines)>, ...>, edits: %LXical.Document.Edit{text: "Financial", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 30, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.TableComponent do", "\n", 1, true}, document_line_count: 46, starting_index: 1}}}}]>]
+15:07:34.501 [info] Compiled ativar in 747 ms
+15:07:35.772 [info] opened file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex
+15:07:43.149 [info] Completion for %LXical.Document.Position{line: 35, character: 12, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}
+15:07:43.227 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["router_module", "alias"], arity: 2, name: "scoped_alias", origin: "Phoenix.Router", type: :function, visibility: :public, spec: "", metadata: %{type: :reflection}}, %LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["router_module", "path"], arity: 2, name: "scoped_path", origin: "Phoenix.Router", type: :function, visibility: :public, spec: "", metadata: %{type: :reflection}}, %LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["options", "list"], arity: 2, name: "scope", origin: "Phoenix.Router", type: :macro, visibility: :public, spec: "", metadata: %{}}, %LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["path", "options", "list"], arity: 3, name: "scope", origin: "Phoenix.Router", type: :macro, visibility: :public, spec: "", metadata: %{}}, %LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["path", "alias", "options", "list"], arity: 4, name: "scope", origin: "Phoenix.Router", type: :macro, visibility: :public, spec: "", metadata: %{}}]
+15:07:43.256 [info] Emitting completions: [#Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "scoped_alias(router_module, alias)", sort_text: "094_scoped_alias:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 7, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "scoped_alias(${1:router_module}, ${2:alias})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 7, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 12, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "scoped_path(router_module, path)", sort_text: "094_scoped_path:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 7, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "scoped_path(${1:router_module}, ${2:path})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 7, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 12, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "scope(options, list)", sort_text: "094_scope:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 7, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "scope(${1:options}, ${2:list})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 7, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 12, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "scope(path, options, list)", sort_text: "094_scope:003", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 7, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "scope(${1:path}, ${2:options}, ${3:list})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 7, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 12, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "scope(path, alias, options, list)", sort_text: "094_scope:004", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 7, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "scope(${1:path}, ${2:alias}, ${3:options}, ${4:list})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 7, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 12, valid?: true, context_line: {:line, "      scope", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>]
+15:07:44.895 [info] Completion for %LXical.Document.Position{line: 35, character: 18, valid?: true, context_line: {:line, "      scope \"fina\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}
+15:07:44.965 [info] Local completions are []
+15:07:44.965 [info] Emitting completions: []
+15:07:46.662 [info] Completion for %LXical.Document.Position{line: 35, character: 17, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}
+15:07:46.749 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["module", "function", "arity"], arity: 3, name: "function_exported?", origin: "Kernel", type: :function, visibility: :public, spec: "@spec function_exported?(module, atom, arity) :: boolean", metadata: %{}}, %LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["conn", "_"], arity: 2, name: "fetch_live_flash", origin: "Phoenix.LiveView.Router", type: :function, visibility: :public, spec: "", metadata: %{}}, %LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["conn"], arity: 1, name: "fetch_cookies", origin: "Plug.Conn", type: :function, visibility: :public, spec: "@spec fetch_cookies(t, Keyword.t) :: t", metadata: %{defaults: 1}}, %LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["conn", "opts"], arity: 2, name: "fetch_cookies", origin: "Plug.Conn", type: :function, visibility: :public, spec: "@spec fetch_cookies(t, Keyword.t) :: t", metadata: %{defaults: 1}}, %LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["conn"], arity: 1, name: "fetch_session", origin: "Plug.Conn", type: :function, visibility: :public, spec: "@spec fetch_session(t, Keyword.t) :: t", metadata: %{defaults: 1}}, %LXical.RemoteControl.Completion.Candidate.Function{argument_names: ["conn", "opts"], arity: 2, name: "fetch_session", origin: "Plug.Conn", type: :function, visibility: :public, spec: "@spec fetch_session(t, Keyword.t) :: t", metadata: %{defaults: 1}}]
+15:07:46.776 [info] Emitting completions: [#Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "function_exported?(module, function, arity)", sort_text: "094_function_exported?:003", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 20, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "function_exported?(${1:module}, ${2:function}, ${3:arity})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 15, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 17, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "fetch_live_flash(conn, _)", sort_text: "094_fetch_live_flash:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 20, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "fetch_live_flash(${1:conn}, ${2:_})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 15, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 17, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "fetch_cookies(conn)", sort_text: "094_fetch_cookies:001", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 20, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "fetch_cookies(${1:conn})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 15, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 17, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "fetch_cookies(conn, opts)", sort_text: "094_fetch_cookies:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 20, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "fetch_cookies(${1:conn}, ${2:opts})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 15, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 17, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "fetch_session(conn)", sort_text: "094_fetch_session:001", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 20, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "fetch_session(${1:conn})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 15, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 17, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "fetch_session(conn, opts)", sort_text: "094_fetch_session:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 20, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "fetch_session(${1:conn}, ${2:opts})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 15, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 17, valid?: true, context_line: {:line, "      scope \"/fi\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>]
+15:07:47.949 [info] Completion for %LXical.Document.Position{line: 35, character: 24, valid?: true, context_line: {:line, "      scope \"/financial\"", "\n", 35, true}, document_line_count: 38, starting_index: 1}
+15:07:48.015 [info] Local completions are []
+15:07:48.015 [info] Emitting completions: []
+15:07:49.813 [info] Completion for %LXical.Document.Position{line: 35, character: 29, valid?: true, context_line: {:line, "      scope \"/financial\", Fi", "\n", 35, true}, document_line_count: 38, starting_index: 1}
+15:07:49.830 [error] GenServer :"ativar::diagnostics" terminating
+** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 33, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+    (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Last message: {:file_diagnostics, %LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: Ativar.MixProject, entropy: 33043, project_config: [app: :ativar, version: "0.1.0", elixir: "~> 1.14", elixirc_paths: ["lib"], start_permanent: false, aliases: [setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"], "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"], "ecto.reset": ["ecto.drop", "ecto.setup"], test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"], "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"], "assets.build": ["tailwind default", "esbuild default"], "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]], deps: [{:phoenix, "~> 1.7.10"}, {:phoenix_ecto, "~> 4.4"}, {:ecto_sql, "~> 3.10"}, {:postgrex, ">= 0.0.0"}, {:phoenix_html, "~> 3.3"}, {:phoenix_live_reload, "~> 1.2", [only: :dev]}, {:phoenix_live_view, "~> 0.20.1"}, {:floki, ">= 0.30.0", [only: :test]}, {:esbuild, "~> 0.8", [runtime: true]}, {:gettext, "~> 0.20"}, {:jason, "~> 1.2"}, {:lucide_icons, "~> 1.0"}, {:dns_cluster, "~> 0.1.1"}, {:bandit, "~> 1.0"}]]}, 23, "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex", [%LXical.Plugin.V1.Diagnostic.Result{details: nil, message: "no function clause matching in Phoenix.Router.scope/2", position: nil, severity: :error, source: "Elixir", uri: "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex"}]}
+State: %LXical.Server.Project.Diagnostics.State{project: %LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []}, entries_by_uri: %{"file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex" => %LXical.Server.Project.Diagnostics.State.Entry{build_number: 12, diagnostics: MapSet.new([%LXical.Plugin.V1.Diagnostic.Result{details: nil, message: "cannot define module AtivarWeb.DashboardLive.Index because it is currently being defined in lib/ativar_web/live/dashboard_live/index.ex:1", position: 1, severity: :error, source: "Elixir", uri: "file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex"}])}, "file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/side_menu_component.ex" => %LXical.Server.Project.Diagnostics.State.Entry{build_number: 0, diagnostics: []}, "file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex" => %LXical.Server.Project.Diagnostics.State.Entry{build_number: 0, diagnostics: []}, "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex" => %LXical.Server.Project.Diagnostics.State.Entry{build_number: 22, diagnostics: MapSet.new([%LXical.Plugin.V1.Diagnostic.Result{details: nil, message: "syntax error before: 'end'", position: {36, 5}, severity: :error, source: "Elixir", uri: "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex"}])}}}
+15:07:49.846 [error] Process :"ativar::diagnostics" (#PID<0.156.0>) terminating
+** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 33, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+    (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Initial Call: LXical.Server.Project.Diagnostics.init/1
+Ancestors: [:"ativar::supervisor", LXical.Server.ProjectSupervisor, LXical.Server.Supervisor, #PID<0.133.0>]
+Message Queue Length: 0
+Messages: []
+Links: [#PID<0.141.0>]
+Dictionary: [{"file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex", %LXical.ProcessCache.Entry{value: {:ok, #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 33, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>}, expiry: 1703182069877}}, {"file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex", %LXical.ProcessCache.Entry{value: {:ok, #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex", version: 0, dirty?: false, lines: %Lines<"defmodule AtivarWeb.DashboardLive.Index do..."(42 lines)>, ...>}, expiry: 1703182069877}}, {"file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/side_menu_component.ex", %LXical.ProcessCache.Entry{value: {:ok, #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/side_menu_component.ex", version: 15, dirty?: true, lines: %Lines<"defmodule AtivarWeb.FinancialLive.SideMenuComponent do..."(46 lines)>, ...>}, expiry: 1703182025118}}, {"file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex", %LXical.ProcessCache.Entry{value: {:ok, #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/table_component.ex", version: 17, dirty?: true, lines: %Lines<"defmodule AtivarWeb.FinancialLive.TableComponent do..."(46 lines)>, ...>}, expiry: 1703182052925}}]
+Trapping Exits: false
+Status: :running
+Heap Size: 6772
+Stack Size: 28
+Reductions: 178608
+15:07:49.852 [error] Child {LXical.Server.Project.Diagnostics, "ativar"} of Supervisor :"ativar::supervisor" terminated
+** (exit) an exception was raised:
+    ** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+        (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 33, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+        (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+        (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+        (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+        (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Pid: #PID<0.156.0>
+Start Call: LXical.Server.Project.Diagnostics.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:07:49.853 [info] Child {LXical.Server.Project.Diagnostics, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.170.0>
+Start Call: LXical.Server.Project.Diagnostics.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:07:49.858 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "File", metadata: %{}, name: "File", summary: "This module contains functions to manipulate files."}, %LXical.RemoteControl.Completion.Candidate.Module{full_name: "Floki", metadata: %{}, name: "Floki", summary: "Floki is a simple HTML parser that enables search for nodes using CSS selectors."}, %LXical.RemoteControl.Completion.Candidate.Module{full_name: "Function", metadata: %{}, name: "Function", summary: "A set of functions for working with functions."}, %LXical.RemoteControl.Completion.Candidate.Exception{full_name: "FunctionClauseError", metadata: %{}, name: "FunctionClauseError", summary: ""}]
+15:07:49.869 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "This module contains functions to manipulate files.", kind: :module, label: "File", sort_text: "079_File", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 33, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "File", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 27, valid?: true, context_line: {:line, "      scope \"/financial\", Fi", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 29, valid?: true, context_line: {:line, "      scope \"/financial\", Fi", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[detail: "Floki is a simple HTML parser that enables search for nodes using CSS selectors.", kind: :module, label: "Floki", sort_text: "079_Floki", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 33, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "Floki", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 27, valid?: true, context_line: {:line, "      scope \"/financial\", Fi", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 29, valid?: true, context_line: {:line, "      scope \"/financial\", Fi", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[detail: "A set of functions for working with functions.", kind: :module, label: "Function", sort_text: "079_Function", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 33, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "Function", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 27, valid?: true, context_line: {:line, "      scope \"/financial\", Fi", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 29, valid?: true, context_line: {:line, "      scope \"/financial\", Fi", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>]
+15:07:50.926 [info] Completion for %LXical.Document.Position{line: 35, character: 36, valid?: true, context_line: {:line, "      scope \"/financial\", Financial", "\n", 35, true}, document_line_count: 38, starting_index: 1}
+15:07:50.963 [error] GenServer :"ativar::diagnostics" terminating
+** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 40, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+    (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Last message: {:file_diagnostics, %LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: Ativar.MixProject, entropy: 33043, project_config: [app: :ativar, version: "0.1.0", elixir: "~> 1.14", elixirc_paths: ["lib"], start_permanent: false, aliases: [setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"], "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"], "ecto.reset": ["ecto.drop", "ecto.setup"], test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"], "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"], "assets.build": ["tailwind default", "esbuild default"], "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]], deps: [{:phoenix, "~> 1.7.10"}, {:phoenix_ecto, "~> 4.4"}, {:ecto_sql, "~> 3.10"}, {:postgrex, ">= 0.0.0"}, {:phoenix_html, "~> 3.3"}, {:phoenix_live_reload, "~> 1.2", [only: :dev]}, {:phoenix_live_view, "~> 0.20.1"}, {:floki, ">= 0.30.0", [only: :test]}, {:esbuild, "~> 0.8", [runtime: true]}, {:gettext, "~> 0.20"}, {:jason, "~> 1.2"}, {:lucide_icons, "~> 1.0"}, {:dns_cluster, "~> 0.1.1"}, {:bandit, "~> 1.0"}]]}, 24, "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex", [%LXical.Plugin.V1.Diagnostic.Result{details: nil, message: "no function clause matching in Phoenix.Router.scope/2", position: nil, severity: :error, source: "Elixir", uri: "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex"}]}
+State: %LXical.Server.Project.Diagnostics.State{project: %LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []}, entries_by_uri: %{}}
+15:07:50.968 [error] Process :"ativar::diagnostics" (#PID<0.170.0>) terminating
+** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 40, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+    (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Initial Call: LXical.Server.Project.Diagnostics.init/1
+Ancestors: [:"ativar::supervisor", LXical.Server.ProjectSupervisor, LXical.Server.Supervisor, #PID<0.133.0>]
+Message Queue Length: 0
+Messages: []
+Links: [#PID<0.141.0>]
+Dictionary: [{"file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex", %LXical.ProcessCache.Entry{value: {:ok, #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 40, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>}, expiry: 1703182071013}}]
+Trapping Exits: false
+Status: :running
+Heap Size: 4185
+Stack Size: 28
+Reductions: 25229
+15:07:50.970 [error] Child {LXical.Server.Project.Diagnostics, "ativar"} of Supervisor :"ativar::supervisor" terminated
+** (exit) an exception was raised:
+    ** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+        (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 40, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+        (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+        (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+        (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+        (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Pid: #PID<0.170.0>
+Start Call: LXical.Server.Project.Diagnostics.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:07:50.971 [info] Child {LXical.Server.Project.Diagnostics, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.172.0>
+Start Call: LXical.Server.Project.Diagnostics.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:07:50.984 [info] Local completions are []
+15:07:50.984 [info] Emitting completions: []
+15:07:51.819 [info] Completion for %LXical.Document.Position{line: 35, character: 40, valid?: true, context_line: {:line, "      scope \"/financial\", FinancialLive", "\n", 35, true}, document_line_count: 38, starting_index: 1}
+15:07:51.847 [error] GenServer :"ativar::diagnostics" terminating
+** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 44, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+    (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Last message: {:file_diagnostics, %LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: Ativar.MixProject, entropy: 33043, project_config: [app: :ativar, version: "0.1.0", elixir: "~> 1.14", elixirc_paths: ["lib"], start_permanent: false, aliases: [setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"], "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"], "ecto.reset": ["ecto.drop", "ecto.setup"], test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"], "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"], "assets.build": ["tailwind default", "esbuild default"], "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"]], deps: [{:phoenix, "~> 1.7.10"}, {:phoenix_ecto, "~> 4.4"}, {:ecto_sql, "~> 3.10"}, {:postgrex, ">= 0.0.0"}, {:phoenix_html, "~> 3.3"}, {:phoenix_live_reload, "~> 1.2", [only: :dev]}, {:phoenix_live_view, "~> 0.20.1"}, {:floki, ">= 0.30.0", [only: :test]}, {:esbuild, "~> 0.8", [runtime: true]}, {:gettext, "~> 0.20"}, {:jason, "~> 1.2"}, {:lucide_icons, "~> 1.0"}, {:dns_cluster, "~> 0.1.1"}, {:bandit, "~> 1.0"}]]}, 25, "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex", [%LXical.Plugin.V1.Diagnostic.Result{details: nil, message: "no function clause matching in Phoenix.Router.scope/2", position: nil, severity: :error, source: "Elixir", uri: "file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex"}]}
+State: %LXical.Server.Project.Diagnostics.State{project: %LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []}, entries_by_uri: %{}}
+15:07:51.856 [error] Process :"ativar::diagnostics" (#PID<0.172.0>) terminating
+** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 44, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+    (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+    (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+    (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+    (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Initial Call: LXical.Server.Project.Diagnostics.init/1
+Ancestors: [:"ativar::supervisor", LXical.Server.ProjectSupervisor, LXical.Server.Supervisor, #PID<0.133.0>]
+Message Queue Length: 0
+Messages: []
+Links: [#PID<0.141.0>]
+Dictionary: [{"file:///home/douglas/Projects/ativar/lib/ativar_web/router.ex", %LXical.ProcessCache.Entry{value: {:ok, #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 44, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>}, expiry: 1703182071897}}]
+Trapping Exits: false
+Status: :running
+Heap Size: 4185
+Stack Size: 28
+Reductions: 25229
+15:07:51.858 [error] Child {LXical.Server.Project.Diagnostics, "ativar"} of Supervisor :"ativar::supervisor" terminated
+** (exit) an exception was raised:
+    ** (FunctionClauseError) no function clause matching in LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range/2
+        (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:50: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.position_to_range(#LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 44, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, nil)
+        (lx_server 0.3.0) lib/lexical/convertibles/lexical.plugin.diagnostic.result.ex:12: LXical.Convertible.Lexical.Plugin.V1.Diagnostic.Result.to_lsp/1
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:30: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+        (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+        (elixir 1.15.7) lib/enum.ex:2564: Enum.reduce_while/3
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:29: LXical.Convertible.Helpers.apply/2
+        (lx_lexical_shared 0.0.1) lib/lexical/convertible.ex:9: anonymous fn/3 in LXical.Convertible.Helpers.apply/2
+        (elixir 1.15.7) lib/enum.ex:4830: Enumerable.List.reduce/3
+Pid: #PID<0.172.0>
+Start Call: LXical.Server.Project.Diagnostics.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:07:51.861 [info] Child {LXical.Server.Project.Diagnostics, "ativar"} of Supervisor :"ativar::supervisor" started
+Pid: #PID<0.174.0>
+Start Call: LXical.Server.Project.Diagnostics.start_link(%LXical.Project{root_uri: "file:///home/douglas/Projects/ativar", mix_exs_uri: "file:///home/douglas/Projects/ativar/mix.exs", mix_project?: true, mix_env: nil, mix_target: nil, env_variables: %{}, project_module: nil, entropy: 33043, project_config: []})
+Restart: :permanent
+Shutdown: 5000
+Type: :worker
+15:07:51.882 [info] Local completions are []
+15:07:51.882 [info] Emitting completions: []
+15:07:52.608 [info] Emitting completions: [#Protocol.Types.Completion.Item<[insert_text_format: :snippet, label: "do/end block", sort_text: "099_do/end block", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 47, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(38 lines)>, ...>, edits: %LXical.Document.Edit{text: "do\n  $0\nend", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 35, character: 41, valid?: true, context_line: {:line, "      scope \"/financial\", FinancialLive do", "\n", 35, true}, document_line_count: 38, starting_index: 1}, end: %LXical.Document.Position{line: 35, character: 43, valid?: true, context_line: {:line, "      scope \"/financial\", FinancialLive do", "\n", 35, true}, document_line_count: 38, starting_index: 1}}}}]>]
+15:07:54.514 [info] Completion for %LXical.Document.Position{line: 36, character: 13, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}
+15:07:54.586 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["path", "live_view"], arity: 2, name: "live", origin: "Phoenix.LiveView.Router", type: :macro, visibility: :public, spec: "", metadata: %{defaults: 2}}, %LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["path", "live_view", "action"], arity: 3, name: "live", origin: "Phoenix.LiveView.Router", type: :macro, visibility: :public, spec: "", metadata: %{defaults: 2}}, %LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["path", "live_view", "action", "opts"], arity: 4, name: "live", origin: "Phoenix.LiveView.Router", type: :macro, visibility: :public, spec: "", metadata: %{defaults: 2}}, %LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["name", "list"], arity: 2, name: "live_session", origin: "Phoenix.LiveView.Router", type: :macro, visibility: :public, spec: "", metadata: %{defaults: 1}}, %LXical.RemoteControl.Completion.Candidate.Macro{argument_names: ["name", "opts", "list"], arity: 3, name: "live_session", origin: "Phoenix.LiveView.Router", type: :macro, visibility: :public, spec: "", metadata: %{defaults: 1}}]
+15:07:54.609 [info] Emitting completions: [#Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "live(path, live_view)", sort_text: "094_live:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 54, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(40 lines)>, ...>, edits: %LXical.Document.Edit{text: "live(${1:path}, ${2:live_view})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 36, character: 9, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}, end: %LXical.Document.Position{line: 36, character: 13, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "live(path, live_view, action)", sort_text: "094_live:003", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 54, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(40 lines)>, ...>, edits: %LXical.Document.Edit{text: "live(${1:path}, ${2:live_view}, ${3:action})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 36, character: 9, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}, end: %LXical.Document.Position{line: 36, character: 13, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "live(path, live_view, action, opts)", sort_text: "094_live:004", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 54, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(40 lines)>, ...>, edits: %LXical.Document.Edit{text: "live(${1:path}, ${2:live_view}, ${3:action}, ${4:opts})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 36, character: 9, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}, end: %LXical.Document.Position{line: 36, character: 13, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "live_session(name, list)", sort_text: "094_live_session:002", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 54, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(40 lines)>, ...>, edits: %LXical.Document.Edit{text: "live_session(${1:name}, ${2:list})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 36, character: 9, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}, end: %LXical.Document.Position{line: 36, character: 13, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}}}}]>, #Protocol.Types.Completion.Item<[insert_text_format: :snippet, kind: :function, label: "live_session(name, opts, list)", sort_text: "094_live_session:003", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/router.ex", version: 54, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Router do..."(40 lines)>, ...>, edits: %LXical.Document.Edit{text: "live_session(${1:name}, ${2:opts}, ${3:list})", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 36, character: 9, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}, end: %LXical.Document.Position{line: 36, character: 13, valid?: true, context_line: {:line, "        live", "\n", 36, true}, document_line_count: 40, starting_index: 1}}}}]>]
+15:07:58.009 [info] Completion for %LXical.Document.Position{line: 36, character: 24, valid?: true, context_line: {:line, "        live(\"/\", Index)", "\n", 36, true}, document_line_count: 40, starting_index: 1}
+15:07:58.083 [info] Local completions are []
+15:07:58.083 [info] Emitting completions: []
+15:07:58.563 [info] Emitting completions: []
+15:08:01.172 [info] Compiled ativar in 706 ms
+15:08:20.153 [info] opened file:///home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex
+15:08:22.237 [info] Completion for %LXical.Document.Position{line: 1, character: 33, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}
+15:08:22.273 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.DashboardLive", metadata: %{}, name: "DashboardLive", summary: ""}]
+15:08:22.278 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.DashboardLive", kind: :module, label: "DashboardLive", sort_text: "079_DashboardLive", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex", version: 0, dirty?: false, lines: %Lines<"defmodule AtivarWeb.DashboardLive.Index do..."(42 lines)>, ...>, edits: %LXical.Document.Edit{text: "DashboardLive", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 33, valid?: true, context_line: {:line, "defmodule AtivarWeb.DashboardLive.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}}}}]>]
+15:08:24.624 [info] Completion for %LXical.Document.Position{line: 1, character: 30, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}
+15:08:24.657 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.Financial", metadata: %{}, name: "Financial", summary: ""}]
+15:08:24.662 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.Financial", kind: :module, label: "Financial", sort_text: "079_Financial", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex", version: 10, dirty?: true, lines: %Lines<"defmodule AtivarWeb.Financial.Index do..."(42 lines)>, ...>, edits: %LXical.Document.Edit{text: "Financial", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 30, valid?: true, context_line: {:line, "defmodule AtivarWeb.Financial.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}}}}]>]
+15:08:25.400 [info] Completion for %LXical.Document.Position{line: 1, character: 34, valid?: true, context_line: {:line, "defmodule AtivarWeb.FinancialLive.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}
+15:08:25.457 [info] Local completions are [%LXical.RemoteControl.Completion.Candidate.Module{full_name: "AtivarWeb.FinancialLive", metadata: %{}, name: "FinancialLive", summary: ""}]
+15:08:25.462 [info] Emitting completions: [#Protocol.Types.Completion.Item<[detail: "AtivarWeb.FinancialLive", kind: :module, label: "FinancialLive", sort_text: "079_FinancialLive", text_edit: %LXical.Document.Changes{document: #LXical.Document<path: "/home/douglas/Projects/ativar/lib/ativar_web/live/financial_live/index.ex", version: 14, dirty?: true, lines: %Lines<"defmodule AtivarWeb.FinancialLive.Index do..."(42 lines)>, ...>, edits: %LXical.Document.Edit{text: "FinancialLive", range: %LXical.Document.Range{start: %LXical.Document.Position{line: 1, character: 21, valid?: true, context_line: {:line, "defmodule AtivarWeb.FinancialLive.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}, end: %LXical.Document.Position{line: 1, character: 34, valid?: true, context_line: {:line, "defmodule AtivarWeb.FinancialLive.Index do", "\n", 1, true}, document_line_count: 42, starting_index: 1}}}}]>]
+15:08:28.719 [info] Compiled ativar in 2.2 seconds
+15:09:10.706 [error] Shutting down

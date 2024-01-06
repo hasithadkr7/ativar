@@ -1,0 +1,180 @@
+<div class="os-wrapper">
+  <div class="top-bar-wrapper">
+    <div class="group-buttons-wrapper">
+      <div class="left-group">
+        <.button style="secondary">
+          <Lucideicons.arrow_left /> Voltar
+        </.button>
+      </div>
+      <div class="middle-group">
+        <.button style="primary">
+          <Lucideicons.truck /> Exportar OS
+        </.button>
+      </div>
+      <div class="right-group">
+        <.button style="secondary">
+          <Lucideicons.edit_2 /> Editar
+        </.button>
+      </div>
+    </div>
+  </div>
+
+  <div class="os-title-wrapper">
+    <div class="os-title">
+      <p class="os-title">Dados da OS</p>
+      <p class="os-name"><%= @os.title %></p>
+    </div>
+    
+    <div class="os-status">
+      <p>Status:</p>
+      <.badge color="purple">
+        Processando
+      </.badge>
+      <Lucideicons.chevron_down />
+    </div>
+  </div>
+
+  <div class="os-details-container">
+    <div class="os-details">
+      <div class="text-wrapper">Cadastro</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Produto</div>
+            <div class="text-wrapper-2">Genaibre</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Quantidade de Caixas</div>
+            <div class="text-wrapper-2">1080</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Embalagem</div>
+            <div class="text-wrapper-2">Caixa padrao 13.6kg Farm</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Termos de Pagamento</div>
+            <div class="text-wrapper-2">Semanal após recebimento</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Número de Parcelas</div>
+            <div class="text-wrapper-2">3</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Valor</div>
+            <div class="text-wrapper-2 broken-line">
+              200
+              200
+              200
+            </div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Porcentagem</div>
+            <div class="text-wrapper-2 broken-line">
+              33%
+              33%
+              33%
+            </div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Vencimento</div>
+            <div class="text-wrapper-2 broken-line">
+              10/02
+              10/03
+              10/04
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+    
+    <div class="os-details">
+      <div class="text-wrapper">Carregamento</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Data de Carregamento</div>
+            <div class="text-wrapper-2">27/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Responsável</div>
+            <div class="text-wrapper-2">Rosielton</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Número de Pallets</div>
+            <div class="text-wrapper-2">30</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Caixas por Pallets</div>
+            <div class="text-wrapper-2">36</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Peso da Embalagem</div>
+            <div class="text-wrapper-2">1900kg</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Termos de Pagamento ao Galpão</div>
+            <div class="text-wrapper-2">Semanal após entrega</div>
+          </div><hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Peso Bruto</div>
+            <div class="text-wrapper-2">1800kg</div>
+          </div><hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Peso Líquido</div>
+            <div class="text-wrapper-2">1200kg</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <hr class="horizontal-divider" />
+    
+    <div class="os-details">
+      <div class="text-wrapper">Prazos</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Data de Partida</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Chegada Porto/Aeroporto</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Data de Chegada Destino</div>
+            <div class="text-wrapper-2">31/02/2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+    
+    <div class="sale-details">
+      <div class="text-wrapper">Observações Gerais</div>
+      <p>
+        Preco FOB mais alto para acomodar custo SP. Previamente combinado com Vitor FDSA
+      </p>      
+    </div>
+  </div>
+</div>

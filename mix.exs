@@ -45,7 +45,8 @@ defmodule Ativar.MixProject do
       {:jason, "~> 1.2"},
       {:lucide_icons, "~> 1.0"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.0"}
+      {:bandit, "~> 1.0"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 

@@ -19,7 +19,7 @@ defmodule Ativar do
   end
 
   def model do
-    quote  do
+    quote do
       use Ecto.Schema
       import Ecto.Changeset
       alias __MODULE__
@@ -27,7 +27,7 @@ defmodule Ativar do
   end
 
   def schema do
-    quote  do
+    quote do
       use Ecto.Schema
       import Ecto.Changeset
       alias __MODULE__

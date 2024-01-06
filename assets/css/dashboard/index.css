@@ -1,0 +1,30 @@
+@import "top_menu.css";
+@import "side_menu.css";
+
+.dashboard {
+  display: flex;
+  margin: 0 0 5rem calc(13.0625rem + 1.5rem);
+}
+
+.group-tables {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.dashboard-table {
+  width: 100%;
+}
+
+.dashboard-table h1 {
+  color: var(--gray);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}

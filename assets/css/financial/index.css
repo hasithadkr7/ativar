@@ -1,0 +1,45 @@
+@import "filter.css";
+@import "side_menu.css";
+
+.financial-wrapper {
+  margin-left: 13.0625rem;
+}
+
+.financial-wrapper .top-bar-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5.5rem;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.financial-wrapper .top-bar-wrapper .search-input {
+  display: flex;
+  width: 23.625rem;
+  height: 2.5rem;
+  padding: 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0 1.5rem;
+}
+
+.financial-wrapper .top-bar-wrapper .group-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-right: 1.5rem;
+}
+
+.financial-wrapper .top-bar-wrapper .group-buttons button {
+  height: 2.5rem;
+  padding: 0.75rem;
+  align-items: center;
+}
+
+.financial-table-wrapper {
+  display: flex;
+  margin: 0 0 5rem 1.5rem;
+}

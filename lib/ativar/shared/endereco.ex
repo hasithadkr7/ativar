@@ -1,13 +1,13 @@
 defmodule Ativar.Shared.Endereco do
   use Ativar, :model
-  
+
   schema "endereco" do
-    field :rua, :string 
-    field :pais, :string 
-    field :estado, :string 
-    field :cidade, :string 
-    field :codigo_postal, :string 
-    field :numero, :string 
+    field :rua, :string
+    field :pais, :string
+    field :estado, :string
+    field :cidade, :string
+    field :codigo_postal, :string
+    field :numero, :string
 
     timestamps()
   end
