@@ -15,7 +15,7 @@ defmodule AtivarWeb.Router do
 
     live("/", LoginLive, :index)
 
-    live_session :default, on_mount: AtivarWeb.RouteAssigns do
+    live_session :default, on_mount: AtivarWeb.NavbarLive do
       live("/dashboard", DashboardLive.Index, :index)
 
       scope "/sales", SalesLive do

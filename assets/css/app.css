@@ -1,5 +1,6 @@
 @import "components/badge.css";
 @import "components/button.css";
+@import "components/navbar.css";
 @import "components/table.css";
 @import "components/search.css";
 
@@ -30,13 +31,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.nav-container {
-  width: 13.0625rem;
-  height: 100vh;
-  position: fixed;
-  border: 1px solid #dcdcdc;
 }
 
 .flex-center {
@@ -102,39 +96,6 @@
   border-radius: 0.25rem;
   border: 2px solid var(--light-gray);
   resize: none;
-}
-
-.nav-container {
-  height: 100%;
-  width: 13.0625rem;
-  flex-shrink: 0;
-  border-right: 1px solid #dcdcdc;
-  padding: 2rem 1.5rem;
-  gap: 3.13rem;
-}
-
-.nav-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.25rem;
-  width: 10.0625rem;
-}
-
-.nav-menu-item {
-  display: flex;
-  height: 2.5rem;
-  padding: 0.75rem;
-  align-items: center;
-  gap: 0.5rem;
-  align-self: stretch;
-  border-radius: 0.25rem;
-  font-weight: 400;
-}
-
-.nav-menu-item.active {
-  background: var(--blue);
 }
 
 .icon {

@@ -1,4 +1,4 @@
-defmodule AtivarWeb.RouteAssigns do
+defmodule AtivarWeb.NavbarLive do
   use AtivarWeb, :live_view
 
   alias AtivarWeb.Router.Helpers, as: Routes
@@ -7,8 +7,10 @@ defmodule AtivarWeb.RouteAssigns do
     socket =
       assign(socket,
         menus: [
-          {"Geral", Routes.dashboard_index_path(socket, :index)},
-          {"Vendas", Routes.sales_index_path(socket, :index)}
+          {"Geral", Routes.dashboard_index_path(socket, :index), :ativar_logo},
+          {"Vendas", Routes.sales_index_path(socket, :index), :package},
+          {"Clientes", Routes.customers_index_path(socket, :index), :users},
+          {"Financeiro", Routes.financial_index_path(socket, :index), :wallet}
         ]
       )
 
