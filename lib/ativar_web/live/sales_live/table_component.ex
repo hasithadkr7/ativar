@@ -7,11 +7,14 @@ defmodule AtivarWeb.SalesLive.TableComponent do
     <div class="sales-table">
       <.table id="sales" rows={@data.sales}>
         <:col :let={{_id, sale}} label="Invoice">
-          <%= String.upcase(sale.nota_fiscal) %>
+          <span :if={sale.invoice}>
+            <%= String.upcase(sale.invoice.codigo) %>
+          </span>
+          <span :if={!sale.invoice}>Não emitida</span>
         </:col>
 
         <:col :let={{_id, sale}} label="Cliente">
-          <%= String.upcase(sale.importador.nome) %>
+          <%= String.capitalize(sale.importador.nome) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Produto">
@@ -23,7 +26,7 @@ defmodule AtivarWeb.SalesLive.TableComponent do
         </:col>
 
         <:col :let={{_id, sale}} label="QTD">
-          <%= sale.carregamento.numero_caixas %>
+          <%= sale.carregamento.numero_pallets %>P/<%= sale.carregamento.numero_caixas %>C
         </:col>
 
         <:col :let={{_id, sale}} label="Data de Chegada">
@@ -35,7 +38,7 @@ defmodule AtivarWeb.SalesLive.TableComponent do
         </:col>
 
         <:col :let={{_id, sale}} label="Valor Total">
-          <%= sale.carregamento.termo.valor_total %>
+          <%= get_currency_symbol(sale.cotacao_venda) %> <%= sale.carregamento.termo.valor_total %>
         </:col>
 
         <:col :let={{_id, sale}} label="Status">
@@ -44,8 +47,10 @@ defmodule AtivarWeb.SalesLive.TableComponent do
           </.badge>
         </:col>
 
-        <:col :let={{_id, _sale}} label="Mais">
-          <Lucideicons.file_plus_2 />
+        <:col :let={{_id, sale}} label="Mais">
+          <.link patch={~p"/sales/#{sale.id}"}>
+            <Lucideicons.file_plus_2 />
+          </.link>
         </:col>
       </.table>
     </div>
@@ -61,4 +66,12 @@ defmodule AtivarWeb.SalesLive.TableComponent do
   end
 
   defp get_status([%{status: status}]), do: status
+
+  defp get_currency_symbol(%{moeda: moeda}) do
+    case moeda do
+      :BRL -> "R$"
+      :USD -> "$"
+      :EUR -> "€"
+    end
+  end
 end

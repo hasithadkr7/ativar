@@ -26,7 +26,7 @@ defmodule Ativar.Logistica.Carregamento do
   def changeset(carregamento \\ %Carregamento{}, attrs) do
     carregamento
     |> cast(attrs, @fields)
-    |> cast_assoc(:termo)
+    |> cast_assoc(:termo, required: true)
     |> validate_required(@fields)
     |> foreign_key_constraint(:galpao_id)
   end

@@ -6,6 +6,7 @@ defmodule Ativar.Vendas do
   alias Ativar.Vendas.Registro
 
   @relations [
+    :invoice,
     importador: [:endereco],
     carregamento: [:galpao, termo: [:parcelas]],
     transporte: [:transporte_aereo, :transporte_maritimo],

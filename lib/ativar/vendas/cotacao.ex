@@ -1,6 +1,8 @@
 defmodule Ativar.Vendas.Cotacao do
   use Ativar, :schema
 
+  @primary_key false
+
   embedded_schema do
     field :data, :date
     field :valor, :decimal

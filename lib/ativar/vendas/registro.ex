@@ -1,6 +1,7 @@
 defmodule Ativar.Vendas.Registro do
   use Ativar, :model
 
+  alias Ativar.Faturamento.Invoice
   alias Ativar.Logistica.Carregamento
   alias Ativar.Logistica.Transporte
   alias Ativar.Pagamentos.Termo
@@ -27,6 +28,7 @@ defmodule Ativar.Vendas.Registro do
     has_one :transporte, Transporte, on_replace: :update
     has_one :carregamento, Carregamento, on_replace: :update
     has_one :termo, Termo, on_replace: :update
+    has_one :invoice, Invoice, on_replace: :update
 
     belongs_to :importador, Cliente, on_replace: :update
 

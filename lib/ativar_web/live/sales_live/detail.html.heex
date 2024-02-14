@@ -2,7 +2,7 @@
   <div class="top-bar-wrapper">
     <div class="group-buttons-wrapper">
       <div class="left-group">
-        <.button style="secondary">
+        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/sales"}>
           <Lucideicons.arrow_left /> Voltar
         </.button>
       </div>
@@ -23,7 +23,10 @@
   </div>
 
   <div class="sale-customer-container">
-    <p> <%= @sale.customer %> </p>
+    <p :if={@sale.invoice}>
+      <%= String.upcase(@sale.invoice.codigo) %>
+    </p>
+    <p :if={!@sale.invoice}>Não emitida</p>
 
     <div class="sale-status">
       <p>Status:</p>
@@ -41,17 +44,17 @@
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Cliente Importador</div>
-            <div class="text-wrapper-2">ROVEG</div>
+            <div class="text-wrapper-2"><%= @sale.importador.nome %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Produto</div>
-            <div class="text-wrapper-2">Gengibre</div>
+            <div class="text-wrapper-2"><%= String.capitalize(Atom.to_string(@sale.produto)) %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Quantidade</div>
-            <div class="text-wrapper-2">1080</div>
+            <div class="text-wrapper-2"><%= @sale.carregamento.numero_pallets * @sale.carregamento.numero_caixas %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">

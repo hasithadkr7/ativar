@@ -16,7 +16,7 @@ defmodule Ativar.Pagamentos.Termo do
   def changeset(termo \\ %Termo{}, attrs) do
     termo
     |> cast(attrs, @fields)
-    |> cast_assoc(:parcelas)
+    |> cast_assoc(:parcelas, required: true)
     |> validate_required([:valor_total])
   end
 end

@@ -15,7 +15,6 @@ alias Ativar.Faturamento.{Banco, Invoice}
 alias Ativar.Logistica.{Carregamento, Galpao, Transporte}
 alias Ativar.Repo
 alias Ativar.Vendas.Registro
-alias Ativar.Pagamentos.{Parcela, Termo}
 
 endereco_attrs = %{
   rua: "Rua Teste",
@@ -119,35 +118,23 @@ carregamento_attrs = %{
   peso_liquido: 957.0,
   embalagem: 1_000.0,
   galpao_id: galpao.id,
-  registro_id: registro.id
-}
-
-carregamento =
-  carregamento_attrs
-  |> Carregamento.changeset()
-  |> Repo.insert!()
-
-termo_pagamento_attrs = %{
-  valor_total: 1_000.0,
-  moeda: :BRL,
   registro_id: registro.id,
-  carregamento_id: carregamento.id
+  termo: %{
+    valor_total: 1_000.0,
+    moeda: :BRL,
+    registro_id: registro.id,
+    parcelas: [
+      %{
+        valor: 1_000.0,
+        porcentagem: 10.0,
+        data_vencimento: DateTime.utc_now(),
+        comentario: "1111",
+        status: :pendente
+      }
+    ]
+  }
 }
 
-termo =
-  termo_pagamento_attrs
-  |> Termo.changeset()
-  |> Repo.insert!()
-
-parcela_attrs = %{
-  valor: 1_000.0,
-  porcentagem: 10.0,
-  data_vencimento: DateTime.utc_now(),
-  comentario: "1111",
-  status: :pendente,
-  termo_id: termo.id
-}
-
-parcela_attrs
-|> Parcela.changeset()
+carregamento_attrs
+|> Carregamento.changeset()
 |> Repo.insert!()
