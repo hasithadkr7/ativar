@@ -4,6 +4,9 @@ defmodule AtivarWeb.SalesLive.Index do
   alias Ativar.Vendas
 
   def mount(_params, _session, socket) do
+    sales = Vendas.list_registro()
+    IO.inspect(sales)
+
     data = [
       %{
         id: 1,

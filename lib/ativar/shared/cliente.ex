@@ -10,6 +10,8 @@ defmodule Ativar.Shared.Cliente do
     field :acronimo, :string
 
     belongs_to :endereco, Ativar.Shared.Endereco, on_replace: :update
+
+    timestamps()
   end
 
   def changeset(cliente \\ %Cliente{}, attrs) do

@@ -7,6 +7,8 @@ defmodule Ativar.Faturamento.Banco do
     field :swift, :string
     field :iban, :string
     field :conta, :string
+
+    timestamps()
   end
 
   def changeset(banco \\ %Banco{}, attrs) do

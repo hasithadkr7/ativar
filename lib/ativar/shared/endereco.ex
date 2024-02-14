@@ -13,7 +13,7 @@ defmodule Ativar.Shared.Endereco do
   end
 
   @doc false
-  def changeset(endereco, attrs) do
+  def changeset(endereco \\ %Endereco{}, attrs) do
     endereco
     |> cast(attrs, [:rua, :pais, :estado, :cidade, :codigo_postal, :numero])
     |> validate_required([:rua, :pais, :estado, :cidade, :codigo_postal, :numero])

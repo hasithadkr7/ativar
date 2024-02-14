@@ -14,7 +14,7 @@ defmodule Ativar.Vendas.Registro do
   @fields ~w[nota_fiscal prazo_chegada data_partida data_chegada incoterm documento produto importador_id]a
   @required_fields ~w[prazo_chegada data_partida data_chegada incoterm produto documento importador_id]a
 
-  schema "registro_venda" do
+  schema "registro" do
     field :nota_fiscal, :string
     field :prazo_chegada, :date
     field :data_partida, :date
@@ -30,8 +30,10 @@ defmodule Ativar.Vendas.Registro do
 
     belongs_to :importador, Cliente, on_replace: :update
 
-    embeds_one :cotacao_venda, Cotacao, on_replace: :update
-    embeds_one :cotacao_recebimento, Cotacao, on_replace: :update
+    # embeds_one :cotacao_venda, Cotacao, on_replace: :update
+    # embeds_one :cotacao_recebimento, Cotacao, on_replace: :update
+
+    timestamps()
   end
 
   def changeset(registro \\ %Registro{}, attrs) do

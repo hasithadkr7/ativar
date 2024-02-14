@@ -15,6 +15,8 @@ defmodule Ativar.Faturamento.Invoice do
     belongs_to :notificador, Cliente, on_replace: :update
     belongs_to :pagador, Cliente, on_replace: :update
     belongs_to :registro, Registro, on_replace: :update
+
+    timestamps()
   end
 
   def changeset(invoice \\ %Invoice{}, attrs) do
