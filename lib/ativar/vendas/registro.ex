@@ -30,8 +30,8 @@ defmodule Ativar.Vendas.Registro do
 
     belongs_to :importador, Cliente, on_replace: :update
 
-    # embeds_one :cotacao_venda, Cotacao, on_replace: :update
-    # embeds_one :cotacao_recebimento, Cotacao, on_replace: :update
+    embeds_one :cotacao_venda, Cotacao, on_replace: :update
+    embeds_one :cotacao_recebimento, Cotacao, on_replace: :update
 
     timestamps()
   end

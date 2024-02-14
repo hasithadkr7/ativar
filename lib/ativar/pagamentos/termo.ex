@@ -1,6 +1,8 @@
 defmodule Ativar.Pagamentos.Termo do
   use Ativar, :model
 
+  @fields ~w(valor_total moeda registro_id carregamento_id)a
+
   schema "termo_pagamento" do
     field :valor_total, :decimal
     field :moeda, Ecto.Enum, values: ~w[BRL USD EUR]a, default: :BRL
@@ -13,8 +15,8 @@ defmodule Ativar.Pagamentos.Termo do
 
   def changeset(termo \\ %Termo{}, attrs) do
     termo
-    |> cast(attrs, [:valor_total, :moeda])
-    |> cast_assoc(:parcelas, required: true)
+    |> cast(attrs, @fields)
+    |> cast_assoc(:parcelas)
     |> validate_required([:valor_total])
   end
 end

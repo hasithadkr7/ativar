@@ -1,4 +1,6 @@
 defmodule Ativar.Vendas do
+  @moduledoc false
+
   use Ativar, :context
 
   alias Ativar.Vendas.Registro

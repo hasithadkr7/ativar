@@ -12,8 +12,10 @@
 
 alias Ativar.Shared.{Cliente, Endereco}
 alias Ativar.Faturamento.{Banco, Invoice}
+alias Ativar.Logistica.{Carregamento, Galpao, Transporte}
 alias Ativar.Repo
 alias Ativar.Vendas.Registro
+alias Ativar.Pagamentos.{Parcela, Termo}
 
 endereco_attrs = %{
   rua: "Rua Teste",
@@ -64,7 +66,9 @@ registro_attrs = %{
   incoterm: :fob,
   documento: :sem_fito,
   produto: :baby_ginger,
-  importador_id: cliente.id
+  importador_id: cliente.id,
+  cotacao_venda: 1_000.0,
+  cotacao_recebimento: 900.0
 }
 
 registro =
@@ -83,4 +87,67 @@ invoice_attrs = %{
 
 invoice_attrs
 |> Invoice.changeset()
+|> Repo.insert!()
+
+transporte_attrs = %{
+  origem: "A",
+  destino: "B",
+  tipo: :aereo,
+  registro_id: registro.id
+}
+
+transporte_attrs
+|> Transporte.changeset()
+|> Repo.insert!()
+
+galpao_attrs = %{
+  nome: "Teste",
+  responsavel: "Fulano",
+  global_gap: "ABC"
+}
+
+galpao =
+  galpao_attrs
+  |> Galpao.changeset()
+  |> Repo.insert!()
+
+carregamento_attrs = %{
+  data: DateTime.utc_now(),
+  numero_pallets: 10,
+  numero_caixas: 100,
+  peso_bruto: 1_000.0,
+  peso_liquido: 957.0,
+  embalagem: 1_000.0,
+  galpao_id: galpao.id,
+  registro_id: registro.id
+}
+
+carregamento =
+  carregamento_attrs
+  |> Carregamento.changeset()
+  |> Repo.insert!()
+
+termo_pagamento_attrs = %{
+  valor_total: 1_000.0,
+  moeda: :BRL,
+  registro_id: registro.id,
+  carregamento_id: carregamento.id
+}
+
+termo =
+  termo_pagamento_attrs
+  |> Termo.changeset()
+  |> Repo.insert!()
+
+parcela_attrs = %{
+  valor: 1_000.0,
+  porcentagem: 10.0,
+  data_vencimento: DateTime.utc_now(),
+  comentario: "1111",
+  status: :pendente,
+  termo_id: termo.id
+}
+
+parcela_attrs
+|> Parcela.changeset()
 |> Repo.insert!()

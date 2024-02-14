@@ -14,7 +14,7 @@ defmodule Ativar.Logistica.Transporte do
 
   def changeset(transporte \\ %Transporte{}, attrs) do
     transporte
-    |> cast(attrs, [:origem, :destino, :tipo])
+    |> cast(attrs, [:origem, :destino, :tipo, :registro_id])
     |> cast_assoc(:transporte_aereo)
     |> cast_assoc(:transporte_maritimo)
     |> validate_required([:origem, :destino, :tipo])

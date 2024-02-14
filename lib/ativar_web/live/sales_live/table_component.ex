@@ -7,40 +7,40 @@ defmodule AtivarWeb.SalesLive.TableComponent do
     <div class="sales-table">
       <.table id="sales" rows={@data.sales}>
         <:col :let={{_id, sale}} label="Invoice">
-          <%= String.upcase(sale.invoice) %>
+          <%= String.upcase(sale.nota_fiscal) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Cliente">
-          <%= String.upcase(sale.customer) %>
+          <%= String.upcase(sale.importador.nome) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Produto">
-          <%= String.upcase(sale.product) %>
+          <%= String.capitalize(Atom.to_string(sale.produto)) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Incoterm">
-          <%= String.upcase(sale.incoterm) %>
+          <%= sale.incoterm %>
         </:col>
 
         <:col :let={{_id, sale}} label="QTD">
-          <%= String.upcase(sale.qtd) %>
+          <%= sale.carregamento.numero_caixas %>
         </:col>
 
         <:col :let={{_id, sale}} label="Data de Chegada">
-          <%= sale.arrival_date %>
+          <%= sale.data_chegada %>
         </:col>
 
         <:col :let={{_id, sale}} label="Transporte">
-          <%= sale.transport %>
+          <%= String.capitalize(Atom.to_string(sale.transporte.tipo)) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Valor Total">
-          <%= :erlang.float_to_binary(sale.total_value, decimals: 2) %>
+          <%= sale.carregamento.termo.valor_total %>
         </:col>
 
         <:col :let={{_id, sale}} label="Status">
-          <.badge color={handle_status_color(sale.status)}>
-            <%= String.capitalize(Atom.to_string(sale.status)) %>
+          <.badge color={handle_status_color(get_status(sale.carregamento.termo.parcelas))}>
+            <%= String.capitalize(Atom.to_string(get_status(sale.carregamento.termo.parcelas))) %>
           </.badge>
         </:col>
 
@@ -54,11 +54,11 @@ defmodule AtivarWeb.SalesLive.TableComponent do
 
   defp handle_status_color(status) do
     case status do
-      :pago -> "green"
-      :atrasado -> "gray"
-      :processando -> "purple"
-      :vencido -> "red"
-      :concluido -> "green"
+      :pendente -> "purple"
+      :paga -> "green"
+      :atrasada -> "gray"
     end
   end
+
+  defp get_status([%{status: status}]), do: status
 end

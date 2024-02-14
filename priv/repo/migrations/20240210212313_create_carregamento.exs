@@ -11,6 +11,8 @@ defmodule Ativar.Repo.Migrations.CreateCarregamento do
       add :embalagem, :float
       add :galpao_id, references(:galpao), null: false
       add :registro_id, references(:registro), null: false
+
+      timestamps()
     end
   end
 end

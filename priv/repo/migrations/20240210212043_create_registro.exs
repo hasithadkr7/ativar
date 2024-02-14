@@ -11,6 +11,8 @@ defmodule Ativar.Repo.Migrations.CreateRegistro do
       add :documento, :string
       add :produto, :string
       add :importador_id, references(:cliente), null: false
+      add :cotacao_venda, :map
+      add :cotacao_recebimento, :map
 
       timestamps()
     end

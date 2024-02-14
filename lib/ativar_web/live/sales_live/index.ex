@@ -5,7 +5,6 @@ defmodule AtivarWeb.SalesLive.Index do
 
   def mount(_params, _session, socket) do
     sales = Vendas.list_registro()
-    IO.inspect(sales)
 
     data = [
       %{
@@ -62,6 +61,11 @@ defmodule AtivarWeb.SalesLive.Index do
       }
     ]
 
-    {:ok, stream(socket, :sales, data)}
+    {:ok, stream(socket, :sales, sales)}
+  end
+
+  @impl true
+  def handle_event("redirect_page", %{"to" => to}, socket) do
+    {:noreply, push_navigate(socket, to: to)}
   end
 end

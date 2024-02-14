@@ -8,4 +8,9 @@ defmodule AtivarWeb.SalesLive.NewSale do
      |> assign(:new_sale, %{title: "teste", customer: "teste"})
      |> assign(:changeset, %{})}
   end
+
+  @impl true
+  def handle_event("redirect_page", %{"to" => to}, socket) do
+    {:noreply, push_navigate(socket, to: to)}
+  end
 end

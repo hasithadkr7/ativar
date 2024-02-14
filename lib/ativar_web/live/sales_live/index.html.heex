@@ -3,7 +3,7 @@
     <.search id="search-sale" name="search-sale" placeholder="Pesquisar" />
 
     <div class="group-buttons">
-      <.button style="primary">
+      <.button style="primary" phx-click="redirect_page" phx-value-to={~p"/sales/new"}>
         <Lucideicons.package_plus class="icon" /> Nova Venda
       </.button>
 
