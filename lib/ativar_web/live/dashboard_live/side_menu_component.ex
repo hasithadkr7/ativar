@@ -5,7 +5,12 @@ defmodule AtivarWeb.DashboardLive.SideMenuComponent do
   def render(assigns) do
     ~H"""
     <div class="side-menu">
-      <.button style="primary" class="btn-new-sale">
+      <.button
+        style="primary"
+        class="btn-new-sale"
+        phx-click="redirect_page"
+        phx-value-to={~p"/sales/new"}
+      >
         <Lucideicons.package_plus /> Nova Venda
       </.button>
 

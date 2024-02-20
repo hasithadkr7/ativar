@@ -1,7 +1,13 @@
 defmodule AtivarWeb.DashboardLive.Index do
   use AtivarWeb, :live_view
 
+  alias Ativar.Vendas
+
   def mount(_params, _session, socket) do
+    sales = Vendas.list_registro()
+    IO.inspect(sales)
+    invoices = 1
+
     data = [
       %{
         id: 1,
@@ -38,5 +44,10 @@ defmodule AtivarWeb.DashboardLive.Index do
     ]
 
     {:ok, stream(socket, :sales, data)}
+  end
+
+  @impl true
+  def handle_event("redirect_page", %{"to" => to}, socket) do
+    {:noreply, push_navigate(socket, to: to)}
   end
 end
