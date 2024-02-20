@@ -9,4 +9,9 @@ defmodule AtivarWeb.CustomersLive.Index do
 
     {:ok, assign(socket, :customers, customers)}
   end
+
+  @impl true
+  def handle_event("redirect_page", %{"to" => to}, socket) do
+    {:noreply, push_navigate(socket, to: to)}
+  end
 end

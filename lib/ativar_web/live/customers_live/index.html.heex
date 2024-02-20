@@ -3,7 +3,7 @@
     <.search id="search-customer" name="search-customer" placeholder="Pesquisar" />
 
     <div class="group-buttons">
-      <.button style="primary">
+      <.button style="primary" phx-click="redirect_page" phx-value-to={~p"/customers/sales/new"}>
         <Lucideicons.package_plus class="icon" /> Cadastrar novo cliente
       </.button>
 
