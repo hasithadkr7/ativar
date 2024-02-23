@@ -1,6 +1,8 @@
 <div class="customers-wrapper">
   <div class="top-bar-wrapper">
-    <.search id="search-customer" name="search-customer" placeholder="Pesquisar" />
+    <.form phx-change="search" class="search-form">
+      <.search id="search-customer" name="search_customer" placeholder="Pesquisar" />
+    </.form>
 
     <div class="group-buttons">
       <.button style="primary" phx-click="redirect_page" phx-value-to={~p"/customers/sales/new"}>

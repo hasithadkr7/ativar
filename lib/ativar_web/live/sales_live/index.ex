@@ -6,7 +6,6 @@ defmodule AtivarWeb.SalesLive.Index do
   @impl true
   def mount(_params, _session, socket) do
     sales = Vendas.list_registro()
-    IO.inspect(sales)
 
     {:ok, stream(socket, :sales, sales)}
   end

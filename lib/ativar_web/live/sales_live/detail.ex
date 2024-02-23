@@ -7,7 +7,6 @@ defmodule AtivarWeb.SalesLive.Detail do
   def mount(%{"id" => id}, _session, socket) do
     {:ok, sale} = Vendas.retrieve_registro(id)
 
-    IO.inspect(sale)
     {:ok, assign(socket, :sale, sale)}
   end
 
