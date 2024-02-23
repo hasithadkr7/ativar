@@ -1,5 +1,6 @@
 defmodule Ativar.Logistica.Carregamento do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   alias Ativar.Logistica.Galpao
   alias Ativar.Pagamentos.Termo
@@ -23,6 +24,7 @@ defmodule Ativar.Logistica.Carregamento do
     timestamps()
   end
 
+  @impl true
   def changeset(carregamento \\ %Carregamento{}, attrs) do
     carregamento
     |> cast(attrs, @fields)

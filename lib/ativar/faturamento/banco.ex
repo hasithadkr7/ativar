@@ -1,5 +1,6 @@
 defmodule Ativar.Faturamento.Banco do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   schema "banco" do
     field :nome, :string
@@ -11,6 +12,7 @@ defmodule Ativar.Faturamento.Banco do
     timestamps()
   end
 
+  @impl true
   def changeset(banco \\ %Banco{}, attrs) do
     banco
     |> cast(attrs, [:nome, :agencia, :swift, :iban, :conta])

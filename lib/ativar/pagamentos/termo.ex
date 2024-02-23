@@ -1,5 +1,6 @@
 defmodule Ativar.Pagamentos.Termo do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   @fields ~w(valor_total moeda registro_id carregamento_id)a
 

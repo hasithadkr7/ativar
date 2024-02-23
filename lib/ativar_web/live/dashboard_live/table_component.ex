@@ -7,26 +7,26 @@ defmodule AtivarWeb.DashboardLive.TableComponent do
     <div class="dashboard-table">
       <h1><%= @title %></h1>
 
-      <.table id="sales" rows={@data.sales}>
+      <.table id={@id} rows={@data}>
         <:col :let={{_id, sale}} label="Invoice">
-          <%= String.upcase(sale.invoice) %>
+          <%= String.upcase(sale.codigo) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Cliente">
-          <%= String.upcase(sale.cliente) %>
+          <%= String.upcase(sale.pagador.nome) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Valor Negociado">
-          <%= :erlang.float_to_binary(sale.valor, decimals: 2) %>
+          <%= :erlang.float_to_binary(1.00, decimals: 2) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Pago">
-          <%= if sale.pago, do: "Sim", else: "Não" %>
+          <%= if true, do: "Sim", else: "Não" %>
         </:col>
 
         <:col :let={{_id, sale}} label="Status">
-          <.badge color={handle_status_color(sale.status)}>
-            <%= String.capitalize(Atom.to_string(sale.status)) %>
+          <.badge color={handle_status_color(:pago)}>
+            <%= String.capitalize(Atom.to_string(:pago)) %>
           </.badge>
         </:col>
       </.table>

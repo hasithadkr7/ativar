@@ -31,7 +31,8 @@
             name = "ativar";
             shellHook = "mkdir -p .nix-mix";
             packages = with pkgs;
-              [erlangR25.elixir_1_15 nodejs_18 postgresql node2nix inotify-tools]
+              [erlangR25.elixir_1_15 nodejs_18 postgresql node2nix]
+              ++ lib.optional stdenv.isLinux [inotify-tools]
               ++ lib.optional stdenv.isDarwin [
                 darwin.apple_sdk.frameworks.CoreServices
                 darwin.apple_sdk.frameworks.CoreFoundation

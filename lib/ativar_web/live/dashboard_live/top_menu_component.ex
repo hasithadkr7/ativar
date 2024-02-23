@@ -1,4 +1,6 @@
 defmodule AtivarWeb.DashboardLive.TopMenuComponent do
+  @moduledoc false
+
   use AtivarWeb, :live_component
 
   @impl true
@@ -15,7 +17,7 @@ defmodule AtivarWeb.DashboardLive.TopMenuComponent do
         </div>
         <hr />
         <div class="invoices">
-          <span class="label">Invoices</span> 384
+          <span class="label">Invoices</span> <%= @invoices_count %>
         </div>
       </div>
 

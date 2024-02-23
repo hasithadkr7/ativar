@@ -1,4 +1,8 @@
-<.live_component module={AtivarWeb.DashboardLive.TopMenuComponent} id="top-menu" />
+<.live_component
+  module={AtivarWeb.DashboardLive.TopMenuComponent}
+  id="top-menu"
+  invoices_count={@invoices_count}
+/>
 
 <div class="dashboard">
   <div class="group-tables">
@@ -6,14 +10,14 @@
       module={AtivarWeb.DashboardLive.TableComponent}
       id="latest-sales"
       title="Últimas Vendas"
-      data={@streams}
+      data={@streams.sales}
     />
 
     <.live_component
       module={AtivarWeb.DashboardLive.TableComponent}
       id="latest-invoices"
       title="Últimos Invoices"
-      data={@streams}
+      data={@streams.invoices}
     />
   </div>
 

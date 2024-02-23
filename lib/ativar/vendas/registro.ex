@@ -1,5 +1,6 @@
 defmodule Ativar.Vendas.Registro do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   alias Ativar.Faturamento.Invoice
   alias Ativar.Logistica.Carregamento
@@ -38,6 +39,7 @@ defmodule Ativar.Vendas.Registro do
     timestamps()
   end
 
+  @impl true
   def changeset(registro \\ %Registro{}, attrs) do
     cast(registro, attrs, @fields)
   end

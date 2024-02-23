@@ -1,5 +1,6 @@
 defmodule Ativar.Faturamento.Invoice do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   alias Ativar.Faturamento.Banco
   alias Ativar.Vendas.Registro
@@ -19,6 +20,7 @@ defmodule Ativar.Faturamento.Invoice do
     timestamps()
   end
 
+  @impl true
   def changeset(invoice \\ %Invoice{}, attrs) do
     invoice
     |> cast(attrs, [:codigo | @relations])

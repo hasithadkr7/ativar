@@ -1,5 +1,18 @@
 import Config
 
+config :ex_money,
+  exchange_rates_retrieve_every: 3_000,
+  api_module: Money.ExchangeRates.OpenExchangeRates,
+  callback_module: Money.ExchangeRates.Callback,
+  exchange_rates_cache_module: Money.ExchangeRates.Cache.Ets,
+  preload_historic_rates: true,
+  open_exchange_rates_app_id: "2c0f4cc37ac9437b8e273d639ac86c56",
+  log_failure: :warning,
+  log_info: :info,
+  json_library: Jason,
+  default_cldr_backend: Ativar.Locale,
+  exclude_protocol_implementations: []
+
 config :ativar,
   ecto_repos: [Ativar.Repo],
   generators: [timestamp_type: :utc_datetime]

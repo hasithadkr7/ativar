@@ -1,5 +1,8 @@
 defmodule Ativar.Shared.Cliente do
+  @moduledoc false
+
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   schema "cliente" do
     field :email_principal, :string
@@ -14,6 +17,7 @@ defmodule Ativar.Shared.Cliente do
     timestamps()
   end
 
+  @impl true
   def changeset(cliente \\ %Cliente{}, attrs) do
     cliente
     |> cast(attrs, [:nome, :email_principal, :email_adicionais, :telefone, :registro])

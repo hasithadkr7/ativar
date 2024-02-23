@@ -46,6 +46,10 @@ defmodule Ativar.MixProject do
       {:lucide_icons, "~> 1.0"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.0"},
+      {:ex_money, "~> 5.0"},
+      {:ex_cldr, "~> 2.0"},
+      {:ex_cldr_numbers, "~> 2.0"},
+      {:swiss_schema, github: "joeljuca/swiss_schema"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end

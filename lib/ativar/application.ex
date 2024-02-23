@@ -11,7 +11,8 @@ defmodule Ativar.Application do
       Ativar.Repo,
       {DNSCluster, query: Application.get_env(:ativar, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Ativar.PubSub},
-      AtivarWeb.Endpoint
+      AtivarWeb.Endpoint,
+      Cldr.Currency
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

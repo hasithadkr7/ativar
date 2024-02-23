@@ -1,5 +1,6 @@
 defmodule Ativar.Pagamentos.Parcela do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   schema "parcela" do
     field :valor, :decimal
@@ -11,6 +12,7 @@ defmodule Ativar.Pagamentos.Parcela do
     belongs_to :termo, Ativar.Pagamentos.Termo
   end
 
+  @impl true
   def changeset(parcela \\ %Parcela{}, attrs) do
     parcela
     |> cast(attrs, [:valor, :porcentagem, :data_vencimento, :comentario, :status])

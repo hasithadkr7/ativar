@@ -43,7 +43,11 @@ defmodule AtivarWeb.DashboardLive.Index do
       }
     ]
 
-    {:ok, stream(socket, :sales, data)}
+    {:ok,
+     socket
+     |> stream(:sales, latest_invoices)
+     |> stream(:invoices, latest_invoices)
+     |> assign(:invoices_count, invoices_count)}
   end
 
   @impl true

@@ -1,5 +1,6 @@
 defmodule Ativar.Logistica.TransporteAereo do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   schema "transporte_aereo" do
     field :companhia, :string
@@ -9,6 +10,7 @@ defmodule Ativar.Logistica.TransporteAereo do
     belongs_to :transporte, Ativar.Logistica.Transporte
   end
 
+  @impl true
   def changeset(aereo \\ %TransporteAereo{}, attrs) do
     aereo
     |> cast(attrs, [:companhia, :codigo_embarque_exportador, :codigo_embarque_importador])

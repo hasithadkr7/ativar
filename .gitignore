@@ -37,3 +37,6 @@ npm-debug.log
 
 /.nix-mix/
 result
+
+.lexical/
+.elixir-tools/

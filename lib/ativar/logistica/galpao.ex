@@ -1,5 +1,6 @@
 defmodule Ativar.Logistica.Galpao do
   use Ativar, :model
+  use SwissSchema, repo: Ativar.Repo
 
   schema "galpao" do
     field :nome, :string
@@ -9,6 +10,7 @@ defmodule Ativar.Logistica.Galpao do
     has_many :carregamentos, Ativar.Logistica.Carregamento
   end
 
+  @impl true
   def changeset(galpao \\ %Galpao{}, attrs) do
     galpao
     |> cast(attrs, [:nome, :responsavel, :global_gap])
