@@ -1,6 +1,8 @@
 <div class="financial-wrapper">
   <div class="top-bar-wrapper">
-    <.search id="search-financial" name="search-financial" placeholder="Pesquisar" />
+    <.form phx-change="search" class="search-form">
+      <.search id="search-financial" name="search_financial" placeholder="Pesquisar" />
+    </.form>
 
     <div class="group-buttons">
       <.button style="secondary" phx-click="open" phx-target="#modal-filter">

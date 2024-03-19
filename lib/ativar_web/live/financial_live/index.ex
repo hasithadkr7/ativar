@@ -1,42 +1,21 @@
 defmodule AtivarWeb.FinancialLive.Index do
   use AtivarWeb, :live_view
 
-  def mount(_params, _session, socket) do
-    data = [
-      %{
-        id: 1,
-        invoice: "atv 1402023",
-        cliente: "ROVEG",
-        valor: 42.50,
-        pago: true,
-        status: :pago
-      },
-      %{
-        id: 2,
-        invoice: "atv 6981394a",
-        cliente: "schrijvershof",
-        valor: 72.00,
-        pago: false,
-        status: :atrasado
-      },
-      %{
-        id: 2,
-        invoice: "atv 6981394a",
-        cliente: "schrijvershof",
-        valor: 72.00,
-        pago: false,
-        status: :atrasado
-      },
-      %{
-        id: 2,
-        invoice: "atv 6981394a",
-        cliente: "schrijvershof",
-        valor: 72.00,
-        pago: false,
-        status: :atrasado
-      }
-    ]
+  alias Ativar.Faturamento.Invoice
+  alias Ativar.Invoices
+  alias Ativar.Repo
 
-    {:ok, stream(socket, :sales, data)}
+  @impl true
+  def mount(_params, _session, socket) do
+    invoices = Invoice.all() |> Repo.preload([:pagador, :registro])
+
+    {:ok, stream(socket, :invoices, invoices)}
+  end
+
+  @impl true
+  def handle_event("search", %{"search_financial" => search_financial}, socket) do
+    filtered_financials = Invoices.get_by_code(search_financial)
+
+    {:noreply, stream(socket, :invoices, filtered_financials, reset: true)}
   end
 end

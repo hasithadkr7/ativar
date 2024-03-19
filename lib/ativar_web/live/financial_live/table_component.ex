@@ -7,26 +7,26 @@ defmodule AtivarWeb.FinancialLive.TableComponent do
     <div class="dashboard-table">
       <h1><%= @title %></h1>
 
-      <.table id="sales" rows={@data.sales}>
-        <:col :let={{_id, sale}} label="Invoice">
-          <%= String.upcase(sale.invoice) %>
+      <.table id="invoices" rows={@data.invoices}>
+        <:col :let={{_id, invoice}} label="Invoice">
+          <%= String.upcase(invoice.codigo) %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Cliente">
-          <%= String.upcase(sale.cliente) %>
+        <:col :let={{_id, invoice}} label="Cliente">
+          <%= String.upcase(invoice.pagador.nome) %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Valor Negociado">
-          <%= :erlang.float_to_binary(sale.valor, decimals: 2) %>
+        <:col :let={{_id, invoice}} label="Valor Negociado">
+          <%= invoice.registro.cotacao_venda.valor %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Pago">
-          <%= if sale.pago, do: "Sim", else: "Não" %>
+        <:col :let={{_id, invoice}} label="Pago">
+          <%= if true, do: "Sim", else: "Não" %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Status">
-          <.badge color={handle_status_color(sale.status)}>
-            <%= String.capitalize(Atom.to_string(sale.status)) %>
+        <:col :let={{_id, invoice}} label="Status">
+          <.badge color={handle_status_color(:pago)}>
+            <%= String.capitalize(Atom.to_string(:pago)) %>
           </.badge>
         </:col>
       </.table>
