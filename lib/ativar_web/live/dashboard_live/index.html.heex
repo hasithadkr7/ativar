@@ -7,14 +7,14 @@
 <div class="dashboard">
   <div class="group-tables">
     <.live_component
-      module={AtivarWeb.DashboardLive.TableComponent}
+      module={AtivarWeb.DashboardLive.TableComponentSale}
       id="latest-sales"
       title="Últimas Vendas"
       data={@streams.sales}
     />
 
     <.live_component
-      module={AtivarWeb.DashboardLive.TableComponent}
+      module={AtivarWeb.DashboardLive.TableComponentInvoice}
       id="latest-invoices"
       title="Últimos Invoices"
       data={@streams.invoices}

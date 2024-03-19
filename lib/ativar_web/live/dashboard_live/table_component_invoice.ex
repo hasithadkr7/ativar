@@ -1,4 +1,4 @@
-defmodule AtivarWeb.DashboardLive.TableComponent do
+defmodule AtivarWeb.DashboardLive.TableComponentInvoice do
   use AtivarWeb, :live_component
 
   @impl true
@@ -8,23 +8,23 @@ defmodule AtivarWeb.DashboardLive.TableComponent do
       <h1><%= @title %></h1>
 
       <.table id={@id} rows={@data}>
-        <:col :let={{_id, sale}} label="Invoice">
-          <%= String.upcase(sale.codigo) %>
+        <:col :let={{_id, invoice}} label="Invoice">
+          <%= String.upcase(invoice.codigo) %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Cliente">
-          <%= String.upcase(sale.pagador.nome) %>
+        <:col :let={{_id, invoice}} label="Cliente">
+          <%= String.upcase(invoice.pagador.nome) %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Valor Negociado">
+        <:col :let={{_id, invoice}} label="Valor Negociado">
           <%= :erlang.float_to_binary(1.00, decimals: 2) %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Pago">
+        <:col :let={{_id, invoice}} label="Pago">
           <%= if true, do: "Sim", else: "Não" %>
         </:col>
 
-        <:col :let={{_id, sale}} label="Status">
+        <:col :let={{_id, invoice}} label="Status">
           <.badge color={handle_status_color(:pago)}>
             <%= String.capitalize(Atom.to_string(:pago)) %>
           </.badge>
