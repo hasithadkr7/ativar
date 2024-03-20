@@ -1,11 +1,15 @@
 defmodule AtivarWeb.SalesLive.Index do
   use AtivarWeb, :live_view
 
-  alias Ativar.Vendas
+  alias Ativar.Vendas.Registro
+  alias Ativar.Repo
 
   @impl true
   def mount(_params, _session, socket) do
-    sales = Vendas.list_registro()
+    sales =
+      Registro.all() |> Repo.preload([:transporte, :invoice, :importador, :carregamento, :termo])
+
+    IO.inspect(sales)
 
     {:ok, stream(socket, :sales, sales)}
   end
