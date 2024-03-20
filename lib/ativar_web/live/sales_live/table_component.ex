@@ -4,7 +4,7 @@ defmodule AtivarWeb.SalesLive.TableComponent do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="sales-table">
+    <div class="sales-table-wrapper">
       <.table id="sales" rows={@data.sales}>
         <:col :let={{_id, sale}} label="Invoice">
           <span :if={sale.invoice}>
