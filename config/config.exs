@@ -1,7 +1,7 @@
 import Config
 
 config :ex_money,
-  exchange_rates_retrieve_every: 3_000,
+  exchange_rates_retrieve_every: 30 * 100 * 100 * 10,
   api_module: Money.ExchangeRates.OpenExchangeRates,
   callback_module: Money.ExchangeRates.Callback,
   exchange_rates_cache_module: Money.ExchangeRates.Cache.Ets,
