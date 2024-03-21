@@ -4,7 +4,7 @@ defmodule AtivarWeb.SalesLive.TableComponent do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="sales-table">
+    <div class="sales-table-wrapper">
       <.table id="sales" rows={@data.sales}>
         <:col :let={{_id, sale}} label="Invoice">
           <span :if={sale.invoice}>
@@ -38,12 +38,12 @@ defmodule AtivarWeb.SalesLive.TableComponent do
         </:col>
 
         <:col :let={{_id, sale}} label="Valor Total">
-          <%= get_currency_symbol(sale.cotacao_venda) %> <%= sale.carregamento.termo.valor_total %>
+          <%= get_currency_symbol(sale.cotacao_venda) %> <%= sale.termo.valor_total %>
         </:col>
 
         <:col :let={{_id, sale}} label="Status">
-          <.badge color={handle_status_color(get_status(sale.carregamento.termo.parcelas))}>
-            <%= String.capitalize(Atom.to_string(get_status(sale.carregamento.termo.parcelas))) %>
+          <.badge color={handle_status_color(:pendente)}>
+            <%= String.capitalize(Atom.to_string(:pendente)) %>
           </.badge>
         </:col>
 

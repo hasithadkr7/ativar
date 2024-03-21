@@ -9,6 +9,6 @@ defmodule Ativar.Repo.Migrations.CreatePackingList do
     end
 
     create index(:packing_list, [:invoice_id])
-    create index(:packing_list, [:client_manufaturador_id])
+    create index(:packing_list, [:cliente_manufaturador_id])
   end
 end
