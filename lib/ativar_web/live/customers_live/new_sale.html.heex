@@ -7,7 +7,7 @@
         </.button>
       </div>
       <div class="right-group">
-         <.button style="primary">
+        <.button style="primary">
           <Lucideicons.save /> Gerar Venda
         </.button>
       </div>
@@ -18,72 +18,76 @@
     <p class="customers-new-sale-title">Nova Venda</p>
   </div>
 
-
-  <.simple_form :let={f} for={@changeset} action={~p"/login"} class="customers-new-sale-details-container">
+  <.simple_form
+    :let={f}
+    for={@changeset}
+    action={~p"/login"}
+    class="customers-new-sale-details-container"
+  >
     <div class="customers-new-sale-details">
       <div class="text-wrapper">Cadastro</div>
       <div class="details">
         <div class="row">
           <div class="input-data">
-            <.input 
-              type="text" 
-              id="cliente-importador" 
-              value="" 
-              name="cliente-importador" 
-              errors={%{}} 
-              label="Cliente Importador" 
+            <.input
+              type="text"
+              id="cliente-importador"
+              value=""
+              name="cliente-importador"
+              errors={%{}}
+              label="Cliente Importador"
             />
           </div>
           <div class="input-data">
-            <.input 
-              type="text" 
-              id="cliente-importador" 
-              value="" 
-              name="cliente-importador" 
-              errors={%{}} 
-              label="Produto" 
+            <.input
+              type="text"
+              id="cliente-importador"
+              value=""
+              name="cliente-importador"
+              errors={%{}}
+              label="Produto"
             />
           </div>
           <div class="input-data">
-            <.input 
-              type="text" 
-              id="cliente-importador" 
-              value="" 
-              name="cliente-importador" 
-              errors={%{}} 
-              label="Quantidade" 
+            <.input
+              type="text"
+              id="cliente-importador"
+              value=""
+              name="cliente-importador"
+              errors={%{}}
+              label="Quantidade"
             />
           </div>
           <div class="input-data">
-            <.input 
-              type="text" 
-              id="cliente-importador" 
-              value="" 
-              name="cliente-importador" 
-              errors={%{}} 
-              label="Moeda" 
+            <.input
+              type="text"
+              id="cliente-importador"
+              value=""
+              name="cliente-importador"
+              errors={%{}}
+              label="Moeda"
             />
           </div>
         </div>
         <div class="row">
           <div class="input-data">
-            <.input 
-              type="text" 
-              id="cliente-importador" 
-              value="" 
-              name="cliente-importador" 
-              errors={%{}} 
-              label="Documentos ao Exportador" 
+            <.input
+              type="text"
+              id="cliente-importador"
+              value=""
+              name="cliente-importador"
+              errors={%{}}
+              label="Documentos ao Exportador"
             />
           </div>
           <div class="input-data">
-            <.input 
-              type="text" 
-              id="cliente-importador" 
-              value="" 
-              name="cliente-importador" 
-              errors={%{}} 
-              label="Termos de Pagamento" 
+            <.input
+              type="text"
+              id="cliente-importador"
+              value=""
+              name="cliente-importador"
+              errors={%{}}
+              label="Termos de Pagamento"
             />
           </div>
         </div>
@@ -91,19 +95,19 @@
     </div>
 
     <hr class="horizontal-divider" />
-   
+
     <div class="customers-new-sale-details">
       <div class="text-wrapper">Observações Gerais</div>
       <div class="details">
         <div class="row">
           <div class="input-data">
-            <.input 
-              type="textarea" 
-              id="cliente-importador" 
-              value="" 
-              name="cliente-importador" 
-              errors={%{}} 
-              label="" 
+            <.input
+              type="textarea"
+              id="cliente-importador"
+              value=""
+              name="cliente-importador"
+              errors={%{}}
+              label=""
               placeholder="Preço FOB mais alto para acomodar custo SP. Previamente combinado com Vitor FDSA"
             />
           </div>

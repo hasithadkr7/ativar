@@ -16,11 +16,11 @@
   </div>
 
   <div class="customers-cards-wrapper">
-    <.live_component 
-      module={AtivarWeb.CustomersLive.CustomerCardComponent} 
+    <.live_component
       :for={customer <- @customers}
+      module={AtivarWeb.CustomersLive.CustomerCardComponent}
       id={customer.id}
-      customer={customer} 
+      customer={customer}
     />
   </div>
 </div>

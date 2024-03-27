@@ -20,7 +20,8 @@ defmodule AtivarWeb.Router do
 
       scope "/sales", SalesLive do
         live("/", Index, :index)
-        live("/new", NewSale, :index)
+        live("/new", NewSale, :new)
+        live("/edit/:id", NewSale, :edit)
         live("/invoice/:id", Invoice, :index)
         live("/os/:id", OS, :index)
         live("/:id", Detail, :index)
