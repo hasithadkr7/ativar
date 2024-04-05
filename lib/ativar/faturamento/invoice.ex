@@ -11,6 +11,8 @@ defmodule Ativar.Faturamento.Invoice do
   schema "invoice" do
     field :codigo, :string
 
+    has_many :movimentacoes, Ativar.Pagamentos.Movimentacao
+
     belongs_to :banco_recebedor, Banco, on_replace: :update
     belongs_to :banco_intermediario, Banco, on_replace: :update
     belongs_to :notificador, Cliente, on_replace: :update
