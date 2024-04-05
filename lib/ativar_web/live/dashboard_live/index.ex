@@ -18,11 +18,15 @@ defmodule AtivarWeb.DashboardLive.Index do
       |> Enum.take(-4)
 
     invoices_count = Invoice.all() |> Enum.count()
+    os_count = 1
+    rv_count = 1
 
     {:ok,
      socket
      |> stream(:sales, latest_sales)
      |> stream(:invoices, latest_invoices)
+     |> assign(:os_count, os_count)
+     |> assign(:rv_count, rv_count)
      |> assign(:invoices_count, invoices_count)}
   end
 

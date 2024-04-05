@@ -35,9 +35,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:produto]}
                 errors={%{}}
                 label="Produto"
               />
@@ -45,9 +43,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:quantidade]}
                 errors={%{}}
                 label="Quantidade"
               />
@@ -55,9 +51,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:incoterm]}
                 errors={%{}}
                 label="Incoterm"
               />
@@ -67,9 +61,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:documento_exportador]}
                 errors={%{}}
                 label="Documentos ao Exportador"
               />
@@ -77,9 +69,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:termo_pagamento]}
                 errors={%{}}
                 label="Termos de Pagamento"
               />
@@ -97,9 +87,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:moeda]}
                 errors={%{}}
                 label="Moeda"
               />
@@ -107,9 +95,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:cotacao]}
                 errors={%{}}
                 label="Cotação"
               />
@@ -117,9 +103,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:preco_caixa]}
                 errors={%{}}
                 label="Preço por Caixa"
               />
@@ -127,9 +111,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:valor_negociado]}
                 errors={%{}}
                 label="Valor Negociado"
               />
@@ -147,31 +129,25 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:destino]}
                 errors={%{}}
-                label="Valor Negociado"
+                label="Destino"
               />
             </div>
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:transporte_value]}
                 errors={%{}}
-                label="Valor Negociado"
+                label="Transporte"
               />
             </div>
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:embalagem]}
                 errors={%{}}
-                label="Valor Negociado"
+                label="Embalagem"
               />
             </div>
           </div>
@@ -179,12 +155,10 @@
             <div class="input-data">
               <.input
                 type="select"
+                field={@sale[:aeroporto]}
                 multiple={false}
-                prompt="Placeholder"
+                prompt="Selecione"
                 options={[1, 2, 3]}
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
                 errors={%{}}
                 label="Aeroporto/Porto de Origem"
               />
@@ -192,9 +166,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:cia_frete_exportacao]}
                 errors={%{}}
                 label="Cia de Frete e Exportação"
               />
@@ -202,12 +174,10 @@
             <div class="input-data">
               <.input
                 type="select"
+                field={@sale[:agente_carga]}
                 multiple={false}
-                prompt="Placeholder"
+                prompt="Selecione"
                 options={[1, 2, 3]}
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
                 errors={%{}}
                 label="Agente de Carga"
               />
@@ -215,12 +185,10 @@
             <div class="input-data">
               <.input
                 type="select"
+                field={@sale[:frete]}
                 multiple={false}
-                prompt="Placeholder"
+                prompt="Selecione"
                 options={[1, 2, 3]}
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
                 errors={%{}}
                 label="Frete"
               />
@@ -237,30 +205,24 @@
           <div class="row">
             <div class="input-data">
               <.input
-                type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                type="date"
+                field={@sale[:data_partida]}
                 errors={%{}}
                 label="Data de Partida"
               />
             </div>
             <div class="input-data">
               <.input
-                type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                type="date"
+                field={@sale[:chegada_aeroporto]}
                 errors={%{}}
                 label="Chegada Porto/Aeroporto"
               />
             </div>
             <div class="input-data">
               <.input
-                type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                type="date"
+                field={@sale[:data_chegada_destino]}
                 errors={%{}}
                 label="Data de Chegada Destino"
               />
@@ -282,7 +244,7 @@
                 value=""
                 name="cliente-importador"
                 errors={%{}}
-                label="Data de Chegada Destino"
+                label="Descrição do Termo"
               />
             </div>
             <div class="input-data">
@@ -292,17 +254,18 @@
                 value=""
                 name="cliente-importador"
                 errors={%{}}
-                label="Data de Chegada Destino"
+                label="Valor Total"
               />
             </div>
             <div class="input-data">
               <.input
-                type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                type="select"
+                field={@sale[:numero_parcelas]}
+                multiple={false}
+                prompt="Selecione"
+                options={[1, 2, 3]}
                 errors={%{}}
-                label="Data de Chegada Destino"
+                label="Número de Parcelas"
               />
             </div>
           </div>
@@ -316,9 +279,7 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:valor_parcela]}
                 errors={%{}}
                 label="Valor da Parcela 1"
               />
@@ -326,19 +287,15 @@
             <div class="input-data">
               <.input
                 type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:porcentagem_parcela]}
                 errors={%{}}
                 label="Porcentagem da Parcela"
               />
             </div>
             <div class="input-data">
               <.input
-                type="text"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                type="date"
+                field={@sale[:data_vencimento]}
                 errors={%{}}
                 label="Data de Vencimento"
               />
@@ -356,9 +313,7 @@
             <div class="input-data">
               <.input
                 type="textarea"
-                id="cliente-importador"
-                value=""
-                name="cliente-importador"
+                field={@sale[:observacoes_gerais]}
                 errors={%{}}
                 label=""
               />
