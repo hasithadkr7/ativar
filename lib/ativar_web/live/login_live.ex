@@ -22,7 +22,7 @@ defmodule AtivarWeb.LoginLive do
       <div class="login-container">
         <img src={~p"/images/logo_vertical.svg"} class="logo" />
 
-        <.simple_form :let={f} for={@changeset} action={~p"/login"} class="login-form">
+        <.simple_form :let={f} for={@changeset} action={~p"/users/login"} class="login-form">
           <h1 class="title">Bem-vindo de volta!</h1>
           <.input
             field={f[:email]}
@@ -32,6 +32,7 @@ defmodule AtivarWeb.LoginLive do
             required
           />
           <.input field={f[:password]} type="password" label="Senha" placeholder="********" required />
+          <.error :if={@flash["error"]}>Email ou senha inválidos</.error>
           <.button phx-disable-with="Acessando..." type="submit" style="primary">
             <Lucideicons.log_in /> Entrar
           </.button>
