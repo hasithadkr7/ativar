@@ -23,5 +23,10 @@
     />
   </div>
 
-  <.live_component module={AtivarWeb.DashboardLive.SideMenuComponent} id="side-menu" />
+  <.live_component 
+    module={AtivarWeb.DashboardLive.SideMenuComponent} 
+    id="side-menu" 
+    incomings={@incomings}
+    expenses={@expenses} 
+  />
 </div>

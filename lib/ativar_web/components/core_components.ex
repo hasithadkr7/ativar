@@ -325,6 +325,9 @@ defmodule AtivarWeb.CoreComponents do
     """
   end
 
+  def input(%{type: "array"} = assigns) do
+  end
+
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def input(assigns) do
     ~H"""

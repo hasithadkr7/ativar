@@ -5,14 +5,13 @@ defmodule Ativar.Shared.Cliente do
   use SwissSchema, repo: Ativar.Repo
 
   schema "cliente" do
-    field :email_principal, :string
-    field :email_adicionais, {:array, :string}
     field :nome, :string
-    field :telefone, :string
+    field :emails, {:array, :string}
+    field :telefones, {:array, :string}
     field :registro, :string
     field :acronimo, :string
-
-    belongs_to :endereco, Ativar.Shared.Endereco, on_replace: :update
+    field :endereco, :string
+    field :moeda, Ecto.Enum, values: [:brl, :eur, :usd]
 
     timestamps()
   end
@@ -20,10 +19,9 @@ defmodule Ativar.Shared.Cliente do
   @impl true
   def changeset(cliente \\ %Cliente{}, attrs) do
     cliente
-    |> cast(attrs, [:nome, :email_principal, :email_adicionais, :telefone, :registro])
-    |> cast_assoc(:endereco, required: true)
+    |> cast(attrs, [:nome, :emails, :telefones, :registro, :endereco, :moeda])
     |> put_acronimo(cliente.nome)
-    |> validate_required([:nome, :email_principal, :telefone, :registro, :acronimo])
+    |> validate_required([:nome, :emails, :telefones, :registro, :acronimo, :endereco, :moeda])
   end
 
   defp put_acronimo(%{valid?: false} = changeset, _nome), do: changeset

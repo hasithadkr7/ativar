@@ -19,7 +19,7 @@ defmodule AtivarWeb.DashboardLive.SideMenuComponent do
 
         <div class="money">
           <span>+ R$</span>
-          <p>145.642,38</p>
+          <p><%= @incomings %></p>
         </div>
 
         <hr class="divider" />
@@ -35,7 +35,7 @@ defmodule AtivarWeb.DashboardLive.SideMenuComponent do
 
         <div class="money">
           <span>- R$</span>
-          <p>145.642,38</p>
+          <p><%= @expenses %></p>
         </div>
 
         <hr class="divider" />

@@ -4,6 +4,8 @@ defmodule AtivarWeb.DashboardLive.Index do
   alias Ativar.Vendas.Registro
   alias Ativar.Faturamento.Invoice
   alias Ativar.Repo
+  alias Ativar.Pagamentos.Parcela
+  alias Ativar.Pagamentos.Movimentacao
 
   @impl true
   def mount(_params, _session, socket) do
@@ -21,13 +23,25 @@ defmodule AtivarWeb.DashboardLive.Index do
     os_count = 1
     rv_count = 1
 
+    incomings =
+      Enum.reduce(Movimentacao.all(), 0, fn movimentacao, acc ->
+        Decimal.add(movimentacao.valor, acc)
+      end)
+
+    expenses =
+      Enum.reduce(Movimentacao.all(), 0, fn movimentacao, acc ->
+        Decimal.add(movimentacao.valor, acc)
+      end)
+
     {:ok,
      socket
      |> stream(:sales, latest_sales)
      |> stream(:invoices, latest_invoices)
      |> assign(:os_count, os_count)
      |> assign(:rv_count, rv_count)
-     |> assign(:invoices_count, invoices_count)}
+     |> assign(:invoices_count, invoices_count)
+     |> assign(:incomings, incomings)
+     |> assign(:expenses, expenses)}
   end
 
   @impl true

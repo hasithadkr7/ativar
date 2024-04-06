@@ -31,12 +31,13 @@ endereco =
   |> Repo.insert!()
 
 cliente_attrs = %{
-  email_principal: "teste@teste.com",
   nome: "Teste",
-  telefone: "9999999",
-  registro: "Teste",
-  acronimo: "Teste",
-  endereco: Map.from_struct(endereco)
+  emails: ["teste@teste.com"],
+  telefones: ["123456789", "987654321"],
+  registro: "Teste 123",
+  acronimo: "T",
+  endereco: "Um endereço",
+  moeda: :brl
 }
 
 cliente =

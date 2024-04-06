@@ -3,13 +3,13 @@ defmodule Ativar.Repo.Migrations.CreateCliente do
 
   def change do
     create table(:cliente) do
-      add :email_principal, :string
-      add :email_adicionais, {:array, :string}
       add :nome, :string
-      add :telefone, :string
+      add :emails, {:array, :string}
+      add :telefones, {:array, :string}
       add :registro, :string
       add :acronimo, :string
-      add :endereco_id, references(:endereco), null: false
+      add :endereco, :string
+      add :moeda, :string
 
       timestamps()
     end
