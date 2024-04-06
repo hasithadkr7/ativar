@@ -9,11 +9,11 @@ defmodule AtivarWeb.DashboardLive.TopMenuComponent do
     <div class="top-menu">
       <div class="first-group">
         <div class="os">
-          <span class="label">OS</span> 2681
+          <span class="label">OS</span> <%= @os_count %>
         </div>
         <hr />
         <div class="rv">
-          <span class="label">RV</span> 687
+          <span class="label">RV</span> <%= @rv_count %>
         </div>
         <hr />
         <div class="invoices">
@@ -34,10 +34,6 @@ defmodule AtivarWeb.DashboardLive.TopMenuComponent do
         <hr />
         <div class="euro">
           <span class="label">Euro</span> R$ 3,56
-        </div>
-        <hr />
-        <div class="yuan-chinese">
-          <span class="label">Yuan Chinês</span> R$ 0,67
         </div>
       </div>
     </div>

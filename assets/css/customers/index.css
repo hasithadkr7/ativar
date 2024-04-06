@@ -63,13 +63,22 @@
   gap: 1.5rem;
 }
 
-.customer-card-wrapper .customer-profile img {
+.customer-card-wrapper .customer-profile .acronimo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
+
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .customer-card-wrapper .customer-profile p {
+  display: flex;
+  justify-content: center;
   color: var(--gray);
   font-size: 1.25rem;
   font-weight: 700;

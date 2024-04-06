@@ -1,11 +1,11 @@
-<div class="customers-wrapper">
+<div class="customers-wrapper" :if={@live_action == :index}>
   <div class="top-bar-wrapper">
     <.form phx-change="search" class="search-form">
       <.search id="search-customer" name="search_customer" placeholder="Pesquisar" />
     </.form>
 
     <div class="group-buttons">
-      <.button style="primary" phx-click="redirect_page" phx-value-to={~p"/customers/sales/new"}>
+      <.button style="primary" phx-click="redirect_page" phx-value-to={~p"/customers/new"}>
         <Lucideicons.package_plus class="icon" /> Cadastrar novo cliente
       </.button>
 
@@ -17,10 +17,19 @@
 
   <div class="customers-cards-wrapper">
     <.live_component
-      :for={customer <- @customers}
+      :for={{_, customer} <- @streams.customers}
       module={AtivarWeb.CustomersLive.CustomerCardComponent}
       id={customer.id}
       customer={customer}
     />
   </div>
 </div>
+
+<.live_component
+  :if={@live_action in [:new, :edit]}
+  id={@customer.id || :new}
+  title={@page_title}
+  customer={@customer}
+  patch={~p"/customers"}
+  module={AtivarWeb.CustomersLive.FormComponent}
+/>
