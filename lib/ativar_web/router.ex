@@ -1,9 +1,12 @@
 defmodule AtivarWeb.Router do
   use AtivarWeb, :router
 
+  import AtivarWeb.UserAuth
+
   pipeline :browser do
     plug(:accepts, ["html"])
     plug(:fetch_session)
+    plug(:fetch_current_user)
     plug(:fetch_live_flash)
     plug(:put_root_layout, html: {AtivarWeb.Layouts, :root})
     plug(:protect_from_forgery)
@@ -11,11 +14,10 @@ defmodule AtivarWeb.Router do
   end
 
   scope "/", AtivarWeb do
-    pipe_through(:browser)
+    pipe_through [:browser, :require_authenticated_user]
 
-    live("/", LoginLive, :index)
-
-    live_session :default, on_mount: AtivarWeb.NavbarLive do
+    live_session :authenticated,
+      on_mount: [AtivarWeb.NavbarLive, {AtivarWeb.UserAuth, :ensure_authenticated}] do
       live("/dashboard", DashboardLive.Index, :index)
 
       scope "/sales", SalesLive do
@@ -38,5 +40,20 @@ defmodule AtivarWeb.Router do
         live("/", Index, :index)
       end
     end
+  end
+
+  ## Authentication routes
+
+  scope "/", AtivarWeb do
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
+
+    live("/", LoginLive, :index)
+    post "/users/login", UserSessionController, :create
+  end
+
+  scope "/", AtivarWeb do
+    pipe_through [:browser]
+
+    delete "/users/logout", UserSessionController, :delete
   end
 end

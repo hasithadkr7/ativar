@@ -17,6 +17,13 @@ alias Ativar.Repo
 alias Ativar.Vendas.Registro
 alias Ativar.Colors
 
+Ativar.Auth.register_user(%{
+  email: "john@example.com",
+  name: "John Doe",
+  password: "Senha!123",
+  password_confirmation: "Senha!123"
+})
+
 endereco_attrs = %{
   rua: "Rua Teste",
   pais: "Teste do Sul",
