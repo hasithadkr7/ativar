@@ -10,6 +10,8 @@ defmodule Ativar.Repo.Migrations.CreateCliente do
       add :acronimo, :string
       add :endereco, :string
       add :moeda, :string
+      add :cor, :string
+      add :observacoes, :text
 
       timestamps()
     end

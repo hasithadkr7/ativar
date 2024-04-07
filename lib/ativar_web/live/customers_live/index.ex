@@ -3,11 +3,10 @@ defmodule AtivarWeb.CustomersLive.Index do
 
   alias Ativar.Clientes
   alias Ativar.Shared.Cliente
-  alias AtivarWeb.CustomersLive.FormComponent
 
   @impl true
   def mount(_params, _session, socket) do
-    customers = Cliente.all()
+    customers = Clientes.all_order_by_desc()
 
     {:ok, stream(socket, :customers, customers)}
   end
@@ -15,11 +14,6 @@ defmodule AtivarWeb.CustomersLive.Index do
   @impl true
   def handle_params(params, _url, socket) do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
-  end
-
-  @impl true
-  def handle_info({FormComponent, {:saved, customer}}, socket) do
-    {:noreply, stream_insert(socket, :customers, customer)}
   end
 
   @impl true
@@ -35,13 +29,13 @@ defmodule AtivarWeb.CustomersLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     case Cliente.get(id) do
-      nil ->
-        push_patch(socket, to: ~p"/customers")
-
-      customer ->
+      {:ok, customer} ->
         socket
         |> assign(:page_title, "Editar Cliente")
         |> assign(:customer, customer)
+
+      _ ->
+        push_patch(socket, to: ~p"/customers")
     end
   end
 

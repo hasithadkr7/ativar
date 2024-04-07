@@ -4,16 +4,18 @@ defmodule Ativar.Clientes do
   use Ativar, :context
 
   alias Ativar.Shared.Cliente
-  alias Ecto.Multi
-  alias Ativar.Shared.Endereco
   alias Ativar.Repo
 
-  def create(%{cliente: cliente, endereco: endereco}) do
-    Multi.new()
-    |> Multi.insert(:endereco, Endereco.changeset(endereco))
-    |> Multi.insert(:cliente, Cliente.changeset(cliente))
-    |> Repo.transaction()
-    |> IO.inspect()
+  def all_order_by_desc do
+    query()
+    |> order_by([c], desc: c.id)
+    |> Repo.all()
+  end
+
+  def upsert(cliente, attrs) do
+    cliente
+    |> Cliente.changeset(attrs)
+    |> Repo.insert_or_update()
   end
 
   def get_by_name(name) do

@@ -2,12 +2,12 @@
   <div class="top-bar-wrapper">
     <div class="group-buttons-wrapper">
       <div class="left-group">
-        <.button style="secondary">
+        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/customers"}>
           <Lucideicons.arrow_left /> Voltar
         </.button>
       </div>
       <div class="right-group">
-        <.button style="secondary">
+        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/customers/edit/#{@customer.id}"}>
           <Lucideicons.edit_2 /> Editar
         </.button>
       </div>
@@ -21,38 +21,37 @@
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Cliente Importador</div>
-            <div class="text-wrapper-2">ROVEG</div>
+            <div class="text-wrapper-2"><%= @customer.nome %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Registro</div>
-            <div class="text-wrapper-2">65-1011256</div>
+            <div class="text-wrapper-2"><%= @customer.registro %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Endereço</div>
-            <div class="text-wrapper-2">Amsterdam</div>
+            <div class="text-wrapper-2"><%= @customer.endereco %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Moeda</div>
-            <div class="text-wrapper-2">EUR</div>
+            <div class="text-wrapper-2">
+              <%= String.upcase(Atom.to_string(@customer.moeda)) %>
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Emails</div>
             <div class="text-wrapper-2 broken-line">
-              emailfalso@roveg.com.br
-              emailfalso@roveg.com.br
-              emailfalso@roveg.com.br
-              emailfalso@roveg.com.br
+              <%= @customer.emails %>
             </div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Telefones</div>
-            <div class="text-wrapper-2 broken-line">+31123-4567-89</div>
+            <div class="text-wrapper-2 broken-line"><%= @customer.telefones %></div>
           </div>
         </div>
       </div>
@@ -63,7 +62,7 @@
     <div class="customer-profile-details">
       <div class="text-wrapper">Observações Gerais</div>
       <p>
-        Preco FOB mais alto para acomodar custo SP. Previamente combinado com Vitor FDSA
+        <%= @customer.observacoes %>
       </p>
     </div>
   </div>

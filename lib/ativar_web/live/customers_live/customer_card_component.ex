@@ -1,14 +1,16 @@
 defmodule AtivarWeb.CustomersLive.CustomerCardComponent do
   use AtivarWeb, :live_component
 
-  alias Ativar.Colors
-
   @impl true
   def render(assigns) do
     ~H"""
     <div class="customer-card-wrapper">
-      <div class="customer-profile">
-        <div class="acronimo" style={"background-color: ##{Colors.random_hexadecimal()}"}>
+      <div
+        class="customer-profile"
+        phx-click="redirect_page"
+        phx-value-to={~p"/customers/profile/#{@customer.id}"}
+      >
+        <div class="acronimo" style={"background-color: #{@customer.cor}"}>
           <%= @customer.acronimo %>
         </div>
         <p><%= @customer.nome %></p>

@@ -15,6 +15,7 @@ alias Ativar.Faturamento.{Banco, Invoice}
 alias Ativar.Logistica.{Carregamento, Galpao, Transporte}
 alias Ativar.Repo
 alias Ativar.Vendas.Registro
+alias Ativar.Colors
 
 endereco_attrs = %{
   rua: "Rua Teste",
@@ -37,7 +38,8 @@ cliente_attrs = %{
   registro: "Teste 123",
   acronimo: "T",
   endereco: "Um endereço",
-  moeda: :brl
+  moeda: :brl,
+  cor: "#" <> Colors.random_hexadecimal()
 }
 
 cliente =
