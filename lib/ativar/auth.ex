@@ -6,7 +6,7 @@ defmodule Ativar.Auth do
   import Ecto.Query, warn: false
   alias Ativar.Repo
 
-  alias Ativar.Auth.{User, UserToken, UserNotifier}
+  alias Ativar.Auth.{User, UserToken}
 
   ## Database getters
 
@@ -157,23 +157,6 @@ defmodule Ativar.Auth do
     |> Ecto.Multi.delete_all(:tokens, UserToken.by_user_and_contexts_query(user, [context]))
   end
 
-  @doc ~S"""
-  Delivers the update email instructions to the given user.
-
-  ## Examples
-
-      iex> deliver_user_update_email_instructions(user, current_email, &url(~p"/users/settings/confirm_email/#{&1})")
-      {:ok, %{to: ..., body: ...}}
-
-  """
-  def deliver_user_update_email_instructions(%User{} = user, current_email, update_email_url_fun)
-      when is_function(update_email_url_fun, 1) do
-    {encoded_token, user_token} = UserToken.build_email_token(user, "change:#{current_email}")
-
-    Repo.insert!(user_token)
-    UserNotifier.deliver_update_email_instructions(user, update_email_url_fun.(encoded_token))
-  end
-
   @doc """
   Returns an `%Ecto.Changeset{}` for changing the user password.
 
@@ -242,31 +225,6 @@ defmodule Ativar.Auth do
     :ok
   end
 
-  ## Confirmation
-
-  @doc ~S"""
-  Delivers the confirmation email instructions to the given user.
-
-  ## Examples
-
-      iex> deliver_user_confirmation_instructions(user, &url(~p"/users/confirm/#{&1}"))
-      {:ok, %{to: ..., body: ...}}
-
-      iex> deliver_user_confirmation_instructions(confirmed_user, &url(~p"/users/confirm/#{&1}"))
-      {:error, :already_confirmed}
-
-  """
-  def deliver_user_confirmation_instructions(%User{} = user, confirmation_url_fun)
-      when is_function(confirmation_url_fun, 1) do
-    if user.confirmed_at do
-      {:error, :already_confirmed}
-    else
-      {encoded_token, user_token} = UserToken.build_email_token(user, "confirm")
-      Repo.insert!(user_token)
-      UserNotifier.deliver_confirmation_instructions(user, confirmation_url_fun.(encoded_token))
-    end
-  end
-
   @doc """
   Confirms a user by the given token.
 
@@ -287,24 +245,6 @@ defmodule Ativar.Auth do
     Ecto.Multi.new()
     |> Ecto.Multi.update(:user, User.confirm_changeset(user))
     |> Ecto.Multi.delete_all(:tokens, UserToken.by_user_and_contexts_query(user, ["confirm"]))
-  end
-
-  ## Reset password
-
-  @doc ~S"""
-  Delivers the reset password email to the given user.
-
-  ## Examples
-
-      iex> deliver_user_reset_password_instructions(user, &url(~p"/users/reset_password/#{&1}"))
-      {:ok, %{to: ..., body: ...}}
-
-  """
-  def deliver_user_reset_password_instructions(%User{} = user, reset_password_url_fun)
-      when is_function(reset_password_url_fun, 1) do
-    {encoded_token, user_token} = UserToken.build_email_token(user, "reset_password")
-    Repo.insert!(user_token)
-    UserNotifier.deliver_reset_password_instructions(user, reset_password_url_fun.(encoded_token))
   end
 
   @doc """
