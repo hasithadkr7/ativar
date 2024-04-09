@@ -7,7 +7,15 @@ defmodule AtivarWeb.SalesLive.Index do
   @impl true
   def mount(_params, _session, socket) do
     sales =
-      Registro.all() |> Repo.preload([:transporte, :invoice, :importador, :carregamento, :termo])
+      Repo.preload(Registro.all(), [
+        :carregamento,
+        :importador,
+        :invoice,
+        :termo,
+        :transporte
+      ])
+
+    # Registro.all() |> Repo.preload([:transporte, :invoice, :importador, :carregamento, :termo])
 
     IO.inspect(sales)
 

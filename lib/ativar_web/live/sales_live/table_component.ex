@@ -18,7 +18,7 @@ defmodule AtivarWeb.SalesLive.TableComponent do
         </:col>
 
         <:col :let={{_id, sale}} label="Produto">
-          <%= String.capitalize(Atom.to_string(sale.produto)) %>
+          <%= String.capitalize(Phoenix.Naming.humanize(sale.produto)) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Incoterm">
@@ -34,11 +34,11 @@ defmodule AtivarWeb.SalesLive.TableComponent do
         </:col>
 
         <:col :let={{_id, sale}} label="Transporte">
-          <%= String.capitalize(Atom.to_string(sale.transporte.tipo)) %>
+          <%= String.capitalize(Phoenix.Naming.humanize(sale.transporte.tipo)) %>
         </:col>
 
         <:col :let={{_id, sale}} label="Valor Total">
-          <%= get_currency_symbol(sale.cotacao_venda) %> <%= sale.termo.valor_total %>
+          <%= get_currency_symbol(sale.importador) %> <%= sale.termo.valor_total %>
         </:col>
 
         <:col :let={{_id, sale}} label="Status">
@@ -69,9 +69,9 @@ defmodule AtivarWeb.SalesLive.TableComponent do
 
   defp get_currency_symbol(%{moeda: moeda}) do
     case moeda do
-      :BRL -> "R$"
-      :USD -> "$"
-      :EUR -> "€"
+      :brl -> "R$"
+      :eur -> "€"
+      :usd -> "$"
     end
   end
 end

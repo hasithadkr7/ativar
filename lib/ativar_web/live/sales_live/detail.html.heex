@@ -50,7 +50,7 @@
           <div class="input-data">
             <div class="text-wrapper-1">Produto</div>
             <div class="text-wrapper-2">
-              <%= String.capitalize(Atom.to_string(@sale.produto)) %>
+              <%= String.capitalize(Phoenix.Naming.humanize(@sale.produto)) %>
             </div>
           </div>
           <hr class="vertical-divider" />
@@ -63,18 +63,18 @@
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Incoterm</div>
-            <div class="text-wrapper-2">FOB</div>
+            <div class="text-wrapper-2"><%= @sale.incoterm %></div>
           </div>
         </div>
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Documentos ao Exportador</div>
-            <div class="text-wrapper-2">Usuais com Fito</div>
+            <div class="text-wrapper-2"><%= String.capitalize(Phoenix.Naming.humanize(@sale.documento)) %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Termos de Pagamento</div>
-            <div class="text-wrapper-2">Semanal após recebimento</div>
+            <div class="text-wrapper-2"><%= @sale.termo.id %></div>
           </div>
         </div>
       </div>
@@ -88,12 +88,14 @@
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Moeda</div>
-            <div class="text-wrapper-2">EUR</div>
+            <div class="text-wrapper-2"><%= String.upcase(Phoenix.Naming.humanize(@sale.importador.moeda)) %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Cotação</div>
-            <div class="text-wrapper-2">R$ 5,55</div>
+            <div class="text-wrapper-2" :if={@sale.cotacao_venda}>
+              <%= @moeda %> <%= @sale.cotacao_venda.valor %>
+            </div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
@@ -103,7 +105,9 @@
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Valor Negociado</div>
-            <div class="text-wrapper-2">R$ 42,50</div>
+            <div class="text-wrapper-2" :if={@moeda}>
+              <%= @moeda %> <%= @sale.termo.valor_total %>
+            </div>
           </div>
         </div>
       </div>
