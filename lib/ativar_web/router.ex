@@ -14,7 +14,7 @@ defmodule AtivarWeb.Router do
   end
 
   scope "/", AtivarWeb do
-    pipe_through [:browser, :require_authenticated_user]
+    pipe_through([:browser, :require_authenticated_user])
 
     live_session :authenticated,
       on_mount: [AtivarWeb.NavbarLive, {AtivarWeb.UserAuth, :ensure_authenticated}] do
@@ -22,8 +22,9 @@ defmodule AtivarWeb.Router do
 
       scope "/sales", SalesLive do
         live("/", Index, :index)
-        live("/new", NewSale, :new)
-        live("/edit/:id", NewSale, :edit)
+        live("/new", Index, :new)
+        live("/edit/:id", Index, :edit)
+        live("/invoice/new", Invoice, :new)
         live("/invoice/:id", Invoice, :index)
         live("/os/:id", OS, :index)
         live("/:id", Detail, :index)
@@ -45,15 +46,15 @@ defmodule AtivarWeb.Router do
   ## Authentication routes
 
   scope "/", AtivarWeb do
-    pipe_through [:browser, :redirect_if_user_is_authenticated]
+    pipe_through([:browser, :redirect_if_user_is_authenticated])
 
     live("/", LoginLive, :index)
-    post "/users/login", UserSessionController, :create
+    post("/users/login", UserSessionController, :create)
   end
 
   scope "/", AtivarWeb do
-    pipe_through [:browser]
+    pipe_through([:browser])
 
-    delete "/users/logout", UserSessionController, :delete
+    delete("/users/logout", UserSessionController, :delete)
   end
 end

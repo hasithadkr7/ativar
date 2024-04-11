@@ -128,7 +128,7 @@ defmodule AtivarWeb.CustomersLive.FormComponent do
 
   def handle_event("save", %{"cliente" => cliente_params}, socket) do
     case Clientes.upsert(socket.assigns.customer, cliente_params) do
-      {:ok, customer} ->
+      {:ok, _customer} ->
         {:noreply,
          socket
          |> put_flash(:success, "Cliente salvo com sucesso!")

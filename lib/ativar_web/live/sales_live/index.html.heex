@@ -1,4 +1,4 @@
-<div class="sales-wrapper">
+<div class="sales-wrapper" :if={@live_action == :index}>
   <div class="top-bar-wrapper">
     <.search id="search-sale" name="search-sale" placeholder="Pesquisar" />
 
@@ -15,3 +15,12 @@
 
   <.live_component module={AtivarWeb.SalesLive.TableComponent} id="sales" data={@streams} />
 </div>
+
+<.live_component
+  :if={@live_action in [:new, :edit]}
+  id={@sale.id || :new}
+  title={@page_title}
+  sale={@sale}
+  patch={~p"/sales"}
+  module={AtivarWeb.SalesLive.FormComponent}
+/>

@@ -7,7 +7,11 @@
         </.button>
       </div>
       <div class="right-group">
-        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/customers/edit/#{@customer.id}"}>
+        <.button
+          style="secondary"
+          phx-click="redirect_page"
+          phx-value-to={~p"/customers/edit/#{@customer.id}"}
+        >
           <Lucideicons.edit_2 /> Editar
         </.button>
       </div>

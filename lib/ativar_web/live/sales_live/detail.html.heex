@@ -7,11 +7,24 @@
         </.button>
       </div>
       <div class="middle-group">
-        <.button style="primary">
+        <.button :if={@sale.invoice} style="primary">
           <Lucideicons.truck /> Ordem de Serviço
         </.button>
-        <.button style="primary">
+        <.button
+          :if={@sale.invoice}
+          style="primary"
+          phx-click="redirect_page"
+          phx-value-to={~p"/sales/invoice/#{@sale.invoice.id}"}
+        >
           <Lucideicons.file_spreadsheet /> Invoice
+        </.button>
+        <.button
+          :if={!@sale.invoice}
+          style="primary"
+          phx-click="redirect_page"
+          phx-value-to={~p"/sales/invoice/new"}
+        >
+          <Lucideicons.file_spreadsheet /> Gerar Invoice
         </.button>
       </div>
       <div class="right-group">
@@ -69,7 +82,9 @@
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Documentos ao Exportador</div>
-            <div class="text-wrapper-2"><%= String.capitalize(Phoenix.Naming.humanize(@sale.documento)) %></div>
+            <div class="text-wrapper-2">
+              <%= String.capitalize(Phoenix.Naming.humanize(@sale.documento)) %>
+            </div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
@@ -88,12 +103,14 @@
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Moeda</div>
-            <div class="text-wrapper-2"><%= String.upcase(Phoenix.Naming.humanize(@sale.importador.moeda)) %></div>
+            <div class="text-wrapper-2">
+              <%= String.upcase(Phoenix.Naming.humanize(@sale.importador.moeda)) %>
+            </div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Cotação</div>
-            <div class="text-wrapper-2" :if={@sale.cotacao_venda}>
+            <div :if={@sale.cotacao_venda} class="text-wrapper-2">
               <%= @moeda %> <%= @sale.cotacao_venda.valor %>
             </div>
           </div>
@@ -105,7 +122,7 @@
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Valor Negociado</div>
-            <div class="text-wrapper-2" :if={@moeda}>
+            <div :if={@moeda} class="text-wrapper-2">
               <%= @moeda %> <%= @sale.termo.valor_total %>
             </div>
           </div>

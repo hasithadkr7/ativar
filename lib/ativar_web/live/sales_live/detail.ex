@@ -16,6 +16,7 @@ defmodule AtivarWeb.SalesLive.Detail do
              :transporte
            ]) do
       moeda = handle_moeda(sale.termo.moeda)
+      IO.inspect(sale)
       {:ok, assign(socket, :sale, sale) |> assign(:moeda, moeda)}
     end
   end

@@ -15,15 +15,42 @@ defmodule AtivarWeb.SalesLive.Index do
         :transporte
       ])
 
-    # Registro.all() |> Repo.preload([:transporte, :invoice, :importador, :carregamento, :termo])
-
     IO.inspect(sales)
 
     {:ok, stream(socket, :sales, sales)}
   end
 
   @impl true
+  def handle_params(params, _url, socket) do
+    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  end
+
+  @impl true
   def handle_event("redirect_page", %{"to" => to}, socket) do
     {:noreply, push_navigate(socket, to: to)}
+  end
+
+  defp apply_action(socket, :edit, %{"id" => id}) do
+    case Registro.get(id) do
+      {:ok, sale} ->
+        socket
+        |> assign(:page_title, "Editar Venda")
+        |> assign(:sale, sale)
+
+      _ ->
+        push_patch(socket, to: ~p"/sales")
+    end
+  end
+
+  defp apply_action(socket, :new, _params) do
+    socket
+    |> assign(:page_title, "Nova Venda")
+    |> assign(:sale, %Registro{})
+  end
+
+  defp apply_action(socket, :index, _params) do
+    socket
+    |> assign(:page_title, "Vendas")
+    |> assign(:sale, nil)
   end
 end

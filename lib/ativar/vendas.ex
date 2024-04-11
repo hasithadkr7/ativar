@@ -14,11 +14,11 @@ defmodule Ativar.Vendas do
   ]
 
   def list_registro do
-    Repo.all(from r in Registro, preload: ^@relations)
+    Repo.all(from(r in Registro, preload: ^@relations))
   end
 
   def retrieve_registro(id) do
-    Repo.fetch_one(from r in Registro, where: r.id == ^id, preload: ^@relations)
+    Repo.fetch_one(from(r in Registro, where: r.id == ^id, preload: ^@relations))
   end
 
   def create_registro(attrs) do
@@ -35,6 +35,12 @@ defmodule Ativar.Vendas do
          {:ok, registro} <- Repo.update(changeset) do
       {:ok, Repo.preload(registro, @relations)}
     end
+  end
+
+  def upsert_registro(registro, attrs) do
+    registro
+    |> Registro.changeset(attrs)
+    |> Repo.insert_or_update()
   end
 
   defdelegate delete_registro(registro), to: Repo, as: :delete
