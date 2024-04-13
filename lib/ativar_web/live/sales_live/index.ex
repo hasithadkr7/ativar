@@ -15,8 +15,6 @@ defmodule AtivarWeb.SalesLive.Index do
         :transporte
       ])
 
-    IO.inspect(sales)
-
     {:ok, stream(socket, :sales, sales)}
   end
 

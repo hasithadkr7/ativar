@@ -36,26 +36,26 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                 <div class="input-data">
                   <.input
                     type="text"
-                    field={@sale[:cliente_importador]}
+                    field={f[:cliente_importador]}
                     errors={%{}}
                     label="Cliente Importador"
                   />
                 </div>
                 <div class="input-data">
-                  <.input type="text" field={@sale[:produto]} errors={%{}} label="Produto" />
+                  <.input type="text" field={f[:produto]} errors={%{}} label="Produto" />
                 </div>
                 <div class="input-data">
-                  <.input type="text" field={@sale[:quantidade]} errors={%{}} label="Quantidade" />
+                  <.input type="text" field={f[:quantidade]} errors={%{}} label="Quantidade" />
                 </div>
                 <div class="input-data">
-                  <.input type="text" field={@sale[:incoterm]} errors={%{}} label="Incoterm" />
+                  <.input type="text" field={f[:incoterm]} errors={%{}} label="Incoterm" />
                 </div>
               </div>
               <div class="row">
                 <div class="input-data">
                   <.input
                     type="text"
-                    field={@sale[:documento_exportador]}
+                    field={f[:documento_exportador]}
                     errors={%{}}
                     label="Documentos ao Exportador"
                   />
@@ -63,7 +63,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                 <div class="input-data">
                   <.input
                     type="text"
-                    field={@sale[:termo_pagamento]}
+                    field={f[:termo_pagamento]}
                     errors={%{}}
                     label="Termos de Pagamento"
                   />
@@ -79,23 +79,18 @@ defmodule AtivarWeb.SalesLive.FormComponent do
             <div class="details">
               <div class="row">
                 <div class="input-data">
-                  <.input type="text" field={@sale[:moeda]} errors={%{}} label="Moeda" />
+                  <.input type="text" field={f[:moeda]} errors={%{}} label="Moeda" />
                 </div>
                 <div class="input-data">
-                  <.input type="text" field={@sale[:cotacao]} errors={%{}} label="Cotação" />
+                  <.input type="text" field={f[:cotacao]} errors={%{}} label="Cotação" />
                 </div>
                 <div class="input-data">
-                  <.input
-                    type="text"
-                    field={@sale[:preco_caixa]}
-                    errors={%{}}
-                    label="Preço por Caixa"
-                  />
+                  <.input type="text" field={f[:preco_caixa]} errors={%{}} label="Preço por Caixa" />
                 </div>
                 <div class="input-data">
                   <.input
                     type="text"
-                    field={@sale[:valor_negociado]}
+                    field={f[:valor_negociado]}
                     errors={%{}}
                     label="Valor Negociado"
                   />
@@ -110,26 +105,23 @@ defmodule AtivarWeb.SalesLive.FormComponent do
             <div class="text-wrapper">Envio</div>
             <div class="details">
               <div class="row">
-                <div class="input-data">
-                  <.input type="text" field={@sale[:destino]} errors={%{}} label="Destino" />
-                </div>
-                <div class="input-data">
-                  <.input
-                    type="text"
-                    field={@sale[:transporte_value]}
-                    errors={%{}}
-                    label="Transporte"
-                  />
-                </div>
-                <div class="input-data">
-                  <.input type="text" field={@sale[:embalagem]} errors={%{}} label="Embalagem" />
-                </div>
+                <.inputs_for :let={t} field={f[:transporte]}>
+                  <div class="input-data">
+                    <.input type="text" field={t[:destino]} errors={%{}} label="Destino" />
+                  </div>
+                  <div class="input-data">
+                    <.input type="text" field={t[:transporte_value]} errors={%{}} label="Transporte" />
+                  </div>
+                  <div class="input-data">
+                    <.input type="text" field={t[:embalagem]} errors={%{}} label="Embalagem" />
+                  </div>
+                </.inputs_for>
               </div>
               <div class="row">
                 <div class="input-data">
                   <.input
                     type="select"
-                    field={@sale[:aeroporto]}
+                    field={f[:aeroporto]}
                     multiple={false}
                     prompt="Selecione"
                     options={[1, 2, 3]}
@@ -140,7 +132,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                 <div class="input-data">
                   <.input
                     type="text"
-                    field={@sale[:cia_frete_exportacao]}
+                    field={f[:cia_frete_exportacao]}
                     errors={%{}}
                     label="Cia de Frete e Exportação"
                   />
@@ -148,7 +140,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                 <div class="input-data">
                   <.input
                     type="select"
-                    field={@sale[:agente_carga]}
+                    field={f[:agente_carga]}
                     multiple={false}
                     prompt="Selecione"
                     options={[1, 2, 3]}
@@ -159,7 +151,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                 <div class="input-data">
                   <.input
                     type="select"
-                    field={@sale[:frete]}
+                    field={f[:frete]}
                     multiple={false}
                     prompt="Selecione"
                     options={[1, 2, 3]}
@@ -178,17 +170,12 @@ defmodule AtivarWeb.SalesLive.FormComponent do
             <div class="details">
               <div class="row">
                 <div class="input-data">
-                  <.input
-                    type="date"
-                    field={@sale[:data_partida]}
-                    errors={%{}}
-                    label="Data de Partida"
-                  />
+                  <.input type="date" field={f[:data_partida]} errors={%{}} label="Data de Partida" />
                 </div>
                 <div class="input-data">
                   <.input
                     type="date"
-                    field={@sale[:chegada_aeroporto]}
+                    field={f[:chegada_aeroporto]}
                     errors={%{}}
                     label="Chegada Porto/Aeroporto"
                   />
@@ -196,7 +183,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                 <div class="input-data">
                   <.input
                     type="date"
-                    field={@sale[:data_chegada_destino]}
+                    field={f[:data_chegada_destino]}
                     errors={%{}}
                     label="Data de Chegada Destino"
                   />
@@ -207,76 +194,76 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
           <hr class="horizontal-divider" />
 
-          <div class="new-sale-details">
-            <div class="text-wrapper">Pagamento</div>
-            <div class="details">
-              <div class="row">
-                <div class="input-data">
-                  <.input
-                    type="text"
-                    id="cliente-importador"
-                    value=""
-                    name="cliente-importador"
-                    errors={%{}}
-                    label="Descrição do Termo"
-                  />
-                </div>
-                <div class="input-data">
-                  <.input
-                    type="text"
-                    id="cliente-importador"
-                    value=""
-                    name="cliente-importador"
-                    errors={%{}}
-                    label="Valor Total"
-                  />
-                </div>
-                <div class="input-data">
-                  <.input
-                    type="select"
-                    field={@sale[:numero_parcelas]}
-                    multiple={false}
-                    prompt="Selecione"
-                    options={[1, 2, 3]}
-                    errors={%{}}
-                    label="Número de Parcelas"
-                  />
+          <.inputs_for :let={termo} field={f[:termo]}>
+            <div class="new-sale-details">
+              <div class="text-wrapper">Pagamento</div>
+              <div class="details">
+                <div class="row">
+                  <div class="input-data">
+                    <.input
+                      type="text"
+                      field={termo[:descricao]}
+                      errors={%{}}
+                      label="Descrição do Termo"
+                    />
+                  </div>
+                  <div class="input-data">
+                    <.input type="text" field={termo[:valor_total]} errors={%{}} label="Valor Total" />
+                  </div>
+                  <div class="input-data">
+                    <.input
+                      type="select"
+                      field={f[:numero_parcela]}
+                      value={@form.params["numero_parcela"]}
+                      multiple={false}
+                      prompt="Selecione"
+                      options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                      errors={%{}}
+                      label="Número de Parcelas"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="new-sale-details">
-            <div class="text-wrapper">Descrições das Parcelas</div>
-            <div class="details">
-              <div class="row">
-                <div class="input-data">
-                  <.input
-                    type="text"
-                    field={@sale[:valor_parcela]}
-                    errors={%{}}
-                    label="Valor da Parcela 1"
-                  />
-                </div>
-                <div class="input-data">
-                  <.input
-                    type="text"
-                    field={@sale[:porcentagem_parcela]}
-                    errors={%{}}
-                    label="Porcentagem da Parcela"
-                  />
-                </div>
-                <div class="input-data">
-                  <.input
-                    type="date"
-                    field={@sale[:data_vencimento]}
-                    errors={%{}}
-                    label="Data de Vencimento"
-                  />
+            <div :if={@form.params["termo"]} class="new-sale-details">
+              <div class="text-wrapper">Descrições das Parcelas</div>
+
+              <div class="details">
+                <div
+                  :for={numero_parcela <- 1..String.to_integer(@form.params["numero_parcela"])}
+                  class="row"
+                >
+                  <.inputs_for :let={parcela} field={termo[:parcelas]}>
+                    <div class="input-data">
+                      <.input
+                        type="text"
+                        field={parcela[:valor]}
+                        errors={%{}}
+                        label={"Valor da Parcela #{numero_parcela}"}
+                      />
+                    </div>
+                    <div class="input-data">
+                      <.input
+                        type="text"
+                        field={parcela[:porcentagem]}
+                        errors={%{}}
+                        label="Porcentagem da Parcela"
+                      />
+                    </div>
+                    <div class="input-data">
+                      <.input
+                        type="date"
+                        field={parcela[:data_vencimento]}
+                        errors={%{}}
+                        label="Data de Vencimento"
+                      />
+                    </div>
+                  </.inputs_for>
                 </div>
               </div>
             </div>
-          </div>
+          </.inputs_for>
 
           <hr class="horizontal-divider" />
 
@@ -285,7 +272,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
             <div class="details">
               <div class="row">
                 <div class="input-data">
-                  <.input type="textarea" field={@sale[:observacoes_gerais]} errors={%{}} label="" />
+                  <.input type="textarea" field={f[:observacoes_gerais]} errors={%{}} label="" />
                 </div>
               </div>
             </div>
@@ -308,8 +295,10 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"registro" => sale_params}, socket) do
+    IO.inspect(socket.assigns)
+
     changeset =
-      socket.assigns.customer
+      socket.assigns.sale
       |> Registro.changeset(sale_params)
       |> Map.put(:action, :validate)
 
@@ -317,7 +306,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
   end
 
   def handle_event("save", %{"registro" => sale_params}, socket) do
-    case Vendas.upsert_registro(socket.assigns.customer, sale_params) do
+    case Vendas.upsert_registro(socket.assigns.sale, sale_params) do
       {:ok, _sale} ->
         {:noreply,
          socket
