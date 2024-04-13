@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "flake:nixpkgs";
+    nixpkgs.url = "flake:nixpkgs/nixos-23.11";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
   };
@@ -15,8 +15,8 @@
       perSystem = {pkgs, ...}: let
         inherit (pkgs) callPackage;
         inherit (pkgs.beam) packagesWith;
-        inherit (pkgs.beam.packages) erlangR25;
-        erl = packagesWith erlangR25;
+        inherit (pkgs.beam.packages) erlangR26;
+        erl = packagesWith erlangR26;
       in {
         packages.default = let
           node = callPackage ./assets/default.nix {};
@@ -31,7 +31,7 @@
             name = "ativar";
             shellHook = "mkdir -p .nix-mix";
             packages = with pkgs;
-              [erlangR25.elixir_1_15 nodejs_18 postgresql node2nix]
+              [erlangR26.elixir_1_16 nodejs_18 postgresql node2nix]
               ++ lib.optional stdenv.isLinux [inotify-tools]
               ++ lib.optional stdenv.isDarwin [
                 darwin.apple_sdk.frameworks.CoreServices
