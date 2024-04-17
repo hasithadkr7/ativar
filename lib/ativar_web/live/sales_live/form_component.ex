@@ -12,7 +12,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
         <div class="top-bar-wrapper">
           <div class="group-buttons-wrapper">
             <div class="left-group">
-              <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/sales"}>
+              <.button style="secondary" phx-click="redirect_page" phx-value-to={@patch}>
                 <Lucideicons.arrow_left /> Voltar
               </.button>
             </div>

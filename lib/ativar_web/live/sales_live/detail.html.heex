@@ -28,7 +28,7 @@
         </.button>
       </div>
       <div class="right-group">
-        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/sales/new"}>
+        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/sales/edit/#{@sale.id}"}>
           <Lucideicons.edit_2 /> Editar
         </.button>
       </div>
@@ -113,6 +113,7 @@
             <div :if={@sale.cotacao_venda} class="text-wrapper-2">
               <%= @moeda %> <%= @sale.cotacao_venda.valor %>
             </div>
+            <div :if={!@sale.cotacao_venda}>--</div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
@@ -125,6 +126,7 @@
             <div :if={@moeda} class="text-wrapper-2">
               <%= @moeda %> <%= @sale.termo.valor_total %>
             </div>
+            <div :if={!@moeda}>--</div>
           </div>
         </div>
       </div>
@@ -138,12 +140,12 @@
         <div class="row">
           <div class="input-data">
             <div class="text-wrapper-1">Destino</div>
-            <div class="text-wrapper-2">Amsterdam via Lisboa</div>
+            <div class="text-wrapper-2"><%= @sale.transporte.destino %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Transporte</div>
-            <div class="text-wrapper-2">Aéreo</div>
+            <div class="text-wrapper-2"><%= String.capitalize(Phoenix.Naming.humanize(@sale.transporte.tipo)) %></div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">

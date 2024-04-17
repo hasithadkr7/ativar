@@ -31,8 +31,18 @@ defmodule AtivarWeb.SalesLive.Index do
   defp apply_action(socket, :edit, %{"id" => id}) do
     case Registro.get(id) do
       {:ok, sale} ->
+        sale =
+          Repo.preload(sale, [
+            :carregamento,
+            :importador,
+            :invoice,
+            :termo,
+            :transporte
+          ])
+
         socket
         |> assign(:page_title, "Editar Venda")
+        |> assign(:patch, ~p"/sales/#{sale.id}")
         |> assign(:sale, sale)
 
       _ ->
@@ -40,9 +50,17 @@ defmodule AtivarWeb.SalesLive.Index do
     end
   end
 
+  defp apply_action(socket, :new, %{"from" => "dashboard"}) do
+    socket
+    |> assign(:page_title, "Nova Venda")
+    |> assign(:patch, ~p"/dashboard")
+    |> assign(:sale, %Registro{})
+  end
+
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "Nova Venda")
+    |> assign(:patch, ~p"/sales")
     |> assign(:sale, %Registro{})
   end
 
