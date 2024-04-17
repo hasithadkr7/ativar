@@ -230,11 +230,11 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               <div class="text-wrapper">Descrições das Parcelas</div>
 
               <div class="details">
-                <div
-                  :for={numero_parcela <- 1..String.to_integer(@form.params["numero_parcela"])}
-                  class="row"
-                >
-                  <.inputs_for :let={parcela} field={termo[:parcelas]}>
+                <.inputs_for :let={parcela} field={termo[:parcelas]}>
+                  <div
+                    :for={numero_parcela <- 1..String.to_integer(@form.params["numero_parcela"])}
+                    class="row"
+                  >
                     <div class="input-data">
                       <.input
                         type="text"
@@ -259,8 +259,8 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                         label="Data de Vencimento"
                       />
                     </div>
-                  </.inputs_for>
-                </div>
+                  </div>
+                </.inputs_for>
               </div>
             </div>
           </.inputs_for>
