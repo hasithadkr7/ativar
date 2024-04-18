@@ -16,8 +16,6 @@ defmodule AtivarWeb.SalesLive.NewSale do
 
   @impl true
   def handle_event("validate", %{"registro" => params}, socket) do
-    IO.inspect(params)
-
     changeset =
       socket.assigns.sale
       |> Ecto.Changeset.change(params)
@@ -27,7 +25,6 @@ defmodule AtivarWeb.SalesLive.NewSale do
   end
 
   def handle_event("save", %{"registro" => params}, socket) do
-    IO.inspect(params)
     save_sale(socket, socket.assigns.action, params)
   end
 

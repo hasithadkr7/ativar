@@ -3,6 +3,7 @@ defmodule AtivarWeb.SalesLive.Index do
 
   alias Ativar.Vendas.Registro
   alias Ativar.Repo
+  alias Ativar.Vendas
 
   @impl true
   def mount(_params, _session, socket) do
@@ -26,6 +27,19 @@ defmodule AtivarWeb.SalesLive.Index do
   @impl true
   def handle_event("redirect_page", %{"to" => to}, socket) do
     {:noreply, push_navigate(socket, to: to)}
+  end
+
+  def handle_event("search", %{"search_sales" => search_sale}, socket) do
+    filtered_sales =
+      Repo.preload(Vendas.search_registros(search_sale), [
+        :carregamento,
+        :importador,
+        :invoice,
+        :termo,
+        :transporte
+      ])
+
+    {:noreply, stream(socket, :sales, filtered_sales, reset: true)}
   end
 
   defp apply_action(socket, :edit, %{"id" => id}) do
@@ -67,6 +81,7 @@ defmodule AtivarWeb.SalesLive.Index do
   defp apply_action(socket, :index, _params) do
     socket
     |> assign(:page_title, "Vendas")
+    |> assign(:patch, ~p"/sales")
     |> assign(:sale, nil)
   end
 end

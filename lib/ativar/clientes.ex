@@ -22,7 +22,6 @@ defmodule Ativar.Clientes do
     name
     |> by_name_ilike()
     |> Repo.all()
-    |> Repo.preload(:endereco)
   end
 
   defp query do

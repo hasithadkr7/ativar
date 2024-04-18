@@ -1,6 +1,8 @@
 <div class="sales-wrapper" :if={@live_action == :index}>
   <div class="top-bar-wrapper">
-    <.search id="search-sale" name="search-sale" placeholder="Pesquisar" />
+    <.form phx-change="search" class="search-form">
+      <.search id="search-sales" name="search_sales" placeholder="Pesquisar" />
+    </.form>
 
     <div class="group-buttons">
       <.button style="primary" phx-click="redirect_page" phx-value-to={~p"/sales/new"}>

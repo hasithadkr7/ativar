@@ -295,8 +295,6 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"registro" => sale_params}, socket) do
-    IO.inspect(socket.assigns)
-
     changeset =
       socket.assigns.sale
       |> Registro.changeset(sale_params)
