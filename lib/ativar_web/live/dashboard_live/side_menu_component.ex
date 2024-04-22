@@ -9,7 +9,7 @@ defmodule AtivarWeb.DashboardLive.SideMenuComponent do
         style="primary"
         class="btn-new-sale"
         phx-click="redirect_page"
-        phx-value-to={~p"/sales/new"}
+        phx-value-to={~p"/sales/new?from=dashboard"}
       >
         <Lucideicons.package_plus /> Nova Venda
       </.button>
