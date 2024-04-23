@@ -21,6 +21,7 @@ defmodule Ativar.Vendas.Registro do
     field :prazo_chegada, :date
     field :data_partida, :date
     field :data_chegada, :date
+    field :observacoes, :string
 
     field :incoterm, Ecto.Enum, values: @incoterms
     field :documento, Ecto.Enum, values: @documentos

@@ -6,6 +6,8 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def render(assigns) do
+    IO.inspect(assigns)
+
     ~H"""
     <div class="new-sale-wrapper">
       <.form :let={f} for={@form} phx-target={@myself} phx-change="validate" phx-submit="save">
@@ -218,14 +220,10 @@ defmodule AtivarWeb.SalesLive.FormComponent do
             </div>
 
             <.inputs_for :let={parcela} field={termo[:parcelas]}>
-              <div class="new-sale-details">
+              <div :if={@form.params["numero_parcela"]} class="new-sale-details">
                 <div class="text-wrapper">Descrições das Parcelas</div>
                 <div class="details">
-                  <span>HELLLO</span>
-                  <div
-                    :for={_ <- 1..5}
-                    class="row"
-                  >
+                  <div :for={_ <- 1..5} class="row">
                     <div class="input-data">
                       <.input
                         type="text"
@@ -271,7 +269,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
             <div class="details">
               <div class="row">
                 <div class="input-data">
-                  <.input type="textarea" field={f[:observacoes_gerais]} errors={%{}} label="" />
+                  <.input type="textarea" field={f[:observacoes]} errors={%{}} label="" />
                 </div>
               </div>
             </div>
@@ -299,7 +297,9 @@ defmodule AtivarWeb.SalesLive.FormComponent do
     changeset =
       socket.assigns.sale
       |> Registro.create_changeset(sale_params)
-      |> IO.inspect(label: "CAST")
+      |> Ecto.Changeset.put_assoc(:termo, %{
+        parcelas: [%Ativar.Pagamentos.Parcela{}]
+      })
       |> Map.put(:action, :validate)
 
     {:noreply, assign_form(socket, changeset)}
