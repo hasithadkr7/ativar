@@ -12,8 +12,8 @@ defmodule AtivarWeb.SalesLive.Index do
         :carregamento,
         :importador,
         :invoice,
-        :termo,
-        :transporte
+        :transporte,
+        termo: [:parcelas]
       ])
 
     {:ok, stream(socket, :sales, sales)}

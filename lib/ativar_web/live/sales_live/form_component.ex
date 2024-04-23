@@ -6,8 +6,6 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def render(assigns) do
-    IO.inspect(assigns)
-
     ~H"""
     <div class="new-sale-wrapper">
       <.form :let={f} for={@form} phx-target={@myself} phx-change="validate" phx-submit="save">
@@ -19,7 +17,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               </.button>
             </div>
             <div class="right-group">
-              <.button style="primary" name="save">
+              <.button style="primary" name="save" type="submit" disabled={@form.errors != []}>
                 <Lucideicons.save /> Gerar Venda
               </.button>
             </div>
@@ -60,14 +58,6 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                     field={f[:documento_exportador]}
                     errors={%{}}
                     label="Documentos ao Exportador"
-                  />
-                </div>
-                <div class="input-data">
-                  <.input
-                    type="text"
-                    field={f[:termo_pagamento]}
-                    errors={%{}}
-                    label="Termos de Pagamento"
                   />
                 </div>
               </div>
@@ -215,11 +205,10 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                   <div class="input-data">
                     <.input
                       type="select"
-                      field={f[:numero_parcela]}
-                      value={@form.params["numero_parcela"]}
+                      field={termo[:numero_parcelas]}
                       multiple={false}
                       prompt="Selecione"
-                      options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                      options={Enum.to_list(1..20)}
                       errors={%{}}
                       label="Número de Parcelas"
                     />
@@ -228,21 +217,21 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               </div>
             </div>
 
-            <div :if={@form.params["numero_parcela"]} class="new-sale-details">
+            <div :if={@form.params["termo"]["numero_parcelas"]} class="new-sale-details">
               <div class="text-wrapper">Descrições das Parcelas</div>
-
               <div class="details">
-                <.inputs_for :let={parcela} field={termo[:parcelas]}>
-                  <div
-                    :for={numero_parcela <- 1..String.to_integer(@form.params["numero_parcela"])}
-                    class="row"
-                  >
+                <.inputs_for
+                  :let={parcela}
+                  field={termo[:parcelas]}
+                  append={append_parcelas(@form.params["termo"]["numero_parcelas"])}
+                >
+                  <div class="row">
                     <div class="input-data">
                       <.input
                         type="text"
                         field={parcela[:valor]}
                         errors={%{}}
-                        label={"Valor da Parcela #{numero_parcela}"}
+                        label="Valor da Parcela"
                       />
                     </div>
                     <div class="input-data">
@@ -259,6 +248,14 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                         field={parcela[:data_vencimento]}
                         errors={%{}}
                         label="Data de Vencimento"
+                      />
+                    </div>
+                    <div class="input-data">
+                      <.input
+                        type="text"
+                        field={parcela[:comentario]}
+                        errors={%{}}
+                        label="Comentário"
                       />
                     </div>
                   </div>
@@ -323,5 +320,16 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   defp assign_form(socket, %Ecto.Changeset{} = changeset) do
     assign(socket, :form, to_form(changeset))
+  end
+
+  alias Ativar.Pagamentos.Parcela
+
+  defp append_parcelas("0"), do: []
+  defp append_parcelas("1"), do: []
+
+  defp append_parcelas(n) do
+    for _ <- 2..String.to_integer(n) do
+      %Parcela{}
+    end
   end
 end

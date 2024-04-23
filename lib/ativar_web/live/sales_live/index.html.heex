@@ -1,4 +1,4 @@
-<div class="sales-wrapper" :if={@live_action == :index}>
+<div :if={@live_action == :index} class="sales-wrapper">
   <div class="top-bar-wrapper">
     <.form phx-change="search" class="search-form">
       <.search id="search-sales" name="search_sales" placeholder="Pesquisar" />
