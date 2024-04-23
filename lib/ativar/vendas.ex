@@ -25,7 +25,9 @@ defmodule Ativar.Vendas do
       on: c.id == r.importador_id,
       join: i in Invoice,
       on: i.registro_id == r.id,
-      where: ilike(i.codigo, ^search) or ilike(c.nome, ^search) or ilike(r.nota_fiscal, ^search)
+      where:
+        ilike(i.codigo, ^"%#{search}%") or ilike(c.nome, ^"%#{search}%") or
+          ilike(r.nota_fiscal, ^"%#{search}%")
     )
     |> Repo.all()
   end
