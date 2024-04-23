@@ -13,6 +13,7 @@ defmodule Ativar.Repo.Migrations.CreateRegistro do
       add :importador_id, references(:cliente), null: false
       add :cotacao_venda, :map
       add :cotacao_recebimento, :map
+      add :observacoes, :text
 
       timestamps()
     end

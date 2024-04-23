@@ -6,6 +6,8 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def render(assigns) do
+    IO.inspect(assigns)
+
     ~H"""
     <div class="new-sale-wrapper">
       <.form :let={f} for={@form} phx-target={@myself} phx-change="validate" phx-submit="save">
@@ -17,7 +19,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               </.button>
             </div>
             <div class="right-group">
-              <.button style="primary" name="save" submit>
+              <.button style="primary" name="save">
                 <Lucideicons.save /> Gerar Venda
               </.button>
             </div>
@@ -226,7 +228,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               </div>
             </div>
 
-            <div :if={@form.params["termo"]} class="new-sale-details">
+            <div :if={@form.params["numero_parcela"]} class="new-sale-details">
               <div class="text-wrapper">Descrições das Parcelas</div>
 
               <div class="details">
@@ -272,7 +274,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
             <div class="details">
               <div class="row">
                 <div class="input-data">
-                  <.input type="textarea" field={f[:observacoes_gerais]} errors={%{}} label="" />
+                  <.input type="textarea" field={f[:observacoes]} errors={%{}} label="" />
                 </div>
               </div>
             </div>
@@ -285,7 +287,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def update(%{sale: sale} = assigns, socket) do
-    changeset = Registro.changeset(sale, %{})
+    changeset = Registro.create_changeset(sale, %{})
 
     {:ok,
      socket
@@ -297,7 +299,10 @@ defmodule AtivarWeb.SalesLive.FormComponent do
   def handle_event("validate", %{"registro" => sale_params}, socket) do
     changeset =
       socket.assigns.sale
-      |> Registro.changeset(sale_params)
+      |> Registro.create_changeset(sale_params)
+      |> Ecto.Changeset.put_assoc(:termo, %{
+        parcelas: [%Ativar.Pagamentos.Parcela{}]
+      })
       |> Map.put(:action, :validate)
 
     {:noreply, assign_form(socket, changeset)}
