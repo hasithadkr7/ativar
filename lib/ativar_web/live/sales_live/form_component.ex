@@ -6,8 +6,6 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def render(assigns) do
-    IO.inspect(assigns)
-
     ~H"""
     <div class="new-sale-wrapper">
       <.form :let={f} for={@form} phx-target={@myself} phx-change="validate" phx-submit="save">
@@ -219,17 +217,21 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               </div>
             </div>
 
-            <.inputs_for :let={parcela} field={termo[:parcelas]}>
-              <div :if={@form.params["numero_parcela"]} class="new-sale-details">
-                <div class="text-wrapper">Descrições das Parcelas</div>
-                <div class="details">
-                  <div :for={_ <- 1..5} class="row">
+            <div :if={@form.params["termo"]["numero_parcelas"]} class="new-sale-details">
+              <div class="text-wrapper">Descrições das Parcelas</div>
+              <div class="details">
+                <.inputs_for
+                  :let={parcela}
+                  field={termo[:parcelas]}
+                  append={append_parcelas(@form.params["termo"]["numero_parcelas"])}
+                >
+                  <div class="row">
                     <div class="input-data">
                       <.input
                         type="text"
                         field={parcela[:valor]}
                         errors={%{}}
-                        label={"Valor da Parcela #{0}"}
+                        label="Valor da Parcela"
                       />
                     </div>
                     <div class="input-data">
@@ -257,9 +259,9 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                       />
                     </div>
                   </div>
-                </div>
+                </.inputs_for>
               </div>
-            </.inputs_for>
+            </div>
           </.inputs_for>
 
           <hr class="horizontal-divider" />
@@ -292,8 +294,6 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"registro" => sale_params}, socket) do
-    IO.inspect(sale_params, label: "PARAMS")
-
     changeset =
       socket.assigns.sale
       |> Registro.create_changeset(sale_params)
@@ -320,5 +320,16 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   defp assign_form(socket, %Ecto.Changeset{} = changeset) do
     assign(socket, :form, to_form(changeset))
+  end
+
+  alias Ativar.Pagamentos.Parcela
+
+  defp append_parcelas("0"), do: []
+  defp append_parcelas("1"), do: []
+
+  defp append_parcelas(n) do
+    for _ <- 2..String.to_integer(n) do
+      %Parcela{}
+    end
   end
 end
