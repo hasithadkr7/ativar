@@ -26,6 +26,14 @@
         >
           <Lucideicons.file_spreadsheet /> Gerar Invoice
         </.button>
+        <.button
+          :if={@sale.invoice}
+          style="primary"
+          phx-click="redirect_page"
+          phx-value-to={~p"/sales/packing-list/#{@sale.id}"}
+        >
+          <Lucideicons.package /> Packing List
+        </.button>
       </div>
       <div class="right-group">
         <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/sales/edit/#{@sale.id}"}>

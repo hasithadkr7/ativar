@@ -24,9 +24,10 @@ defmodule AtivarWeb.Router do
         live("/", Index, :index)
         live("/new", Index, :new)
         live("/edit/:id", Index, :edit)
+        live("/os/:id", OS, :index)
         live("/invoice/new", Invoice, :new)
         live("/invoice/:id", Invoice, :index)
-        live("/os/:id", OS, :index)
+        live("/packing-list/:id", PackingList, :index)
         live("/:id", Detail, :index)
       end
 

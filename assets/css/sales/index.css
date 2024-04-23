@@ -1,6 +1,7 @@
 @import "detail.css";
 @import "invoice.css";
 @import "new_sale.css";
+@import "packing-list.css";
 @import "os.css";
 
 .sales-wrapper {

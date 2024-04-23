@@ -1,0 +1,209 @@
+<div class="packing-list-wrapper">
+  <div class="top-bar-wrapper">
+    <div class="group-buttons-wrapper">
+      <div class="left-group">
+        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/sales/#{@sale.id}"}>
+          <Lucideicons.arrow_left /> Voltar
+        </.button>
+      </div>
+      <div class="right-group">
+        <.button style="secondary">
+          <Lucideicons.download /> Baixar Packing List
+        </.button>
+        <.button style="primary">
+          <Lucideicons.save /> Salvar
+        </.button>
+      </div>
+    </div>
+  </div>
+
+  <div class="packing-list-title-wrapper">
+    <div class="packing-list-title">
+      <p class="packing-list-title">Packing List</p>
+      <p class="packing-list-name"><%= @sale.nota_fiscal %></p>
+    </div>
+  </div>
+
+  <div class="packing-list-details-container">
+    <div class="packing-list-details">
+      <div class="text-wrapper">General Info</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Importer</div>
+            <div class="text-wrapper-2">SUPER THREE PRODUCE</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Packing</div>
+            <div class="text-wrapper-2">13/07/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">ETD</div>
+            <div class="text-wrapper-2">18/07/2023</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Shipping Info</div>
+            <div class="text-wrapper-2">HSUD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+
+    <div class="packing-list-details">
+      <div class="text-wrapper">Exporter</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Company</div>
+            <div class="text-wrapper-2">27/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Address</div>
+            <div class="text-wrapper-2">Rpacking-listielton</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">CNPJ</div>
+            <div class="text-wrapper-2">30</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+
+    <div class="packing-list-details">
+      <div class="text-wrapper">Manufacturer</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Company</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Address</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+
+    <div class="packing-list-details">
+      <div class="text-wrapper">Importer</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Company</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Address</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Contact</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Emails</div>
+            <div class="text-wrapper-2">HSUD</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Phone Numbers</div>
+            <div class="text-wrapper-2">HSUD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+
+    <div class="packing-list-details">
+      <div class="text-wrapper">Notify</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Company</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Emails</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="horizontal-divider" />
+
+    <div class="packing-list-details">
+      <div class="text-wrapper">Shipping Info</div>
+      <div class="details">
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Product/Activity</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Quantity</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Net Weight</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Gross Weight</div>
+            <div class="text-wrapper-2">28/01/2023</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-data">
+            <div class="text-wrapper-1">Number of Boxes</div>
+            <div class="text-wrapper-2">HSUD</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">Dimensions</div>
+            <div class="text-wrapper-2">HSUD</div>
+          </div>
+          <hr class="vertical-divider" />
+          <div class="input-data">
+            <div class="text-wrapper-1">HS Code</div>
+            <div class="text-wrapper-2">HSUD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <hr class="horizontal-divider" />
+
+    <div class="sale-details">
+      <div class="text-wrapper">Additional Notes</div>
+      <p>
+        Commercial Invoice ATV
+        ...
+      </p>
+    </div>
+  </div>
+</div>
