@@ -28,7 +28,11 @@
         </.button>
       </div>
       <div class="right-group">
-        <.button style="secondary" phx-click="redirect_page" phx-value-to={~p"/sales/edit/#{@sale.id}"}>
+        <.button
+          style="secondary"
+          phx-click="redirect_page"
+          phx-value-to={~p"/sales/edit/#{@sale.id}"}
+        >
           <Lucideicons.edit_2 /> Editar
         </.button>
       </div>
@@ -145,7 +149,9 @@
           <hr class="vertical-divider" />
           <div class="input-data">
             <div class="text-wrapper-1">Transporte</div>
-            <div class="text-wrapper-2"><%= String.capitalize(Phoenix.Naming.humanize(@sale.transporte.tipo)) %></div>
+            <div class="text-wrapper-2">
+              <%= String.capitalize(Phoenix.Naming.humanize(@sale.transporte.tipo)) %>
+            </div>
           </div>
           <hr class="vertical-divider" />
           <div class="input-data">

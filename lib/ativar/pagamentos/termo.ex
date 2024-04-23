@@ -2,9 +2,11 @@ defmodule Ativar.Pagamentos.Termo do
   use Ativar, :model
   use SwissSchema, repo: Ativar.Repo
 
-  @fields ~w(valor_total moeda registro_id carregamento_id)a
+  @fields ~w(descricao numero_parcelas valor_total moeda registro_id carregamento_id)a
 
   schema "termo_pagamento" do
+    field :descricao, :string
+    field :numero_parcelas, :integer, default: 0
     field :valor_total, :decimal
     field :moeda, Ecto.Enum, values: ~w[BRL USD EUR]a, default: :BRL
 
@@ -26,7 +28,7 @@ defmodule Ativar.Pagamentos.Termo do
   defp maybe_put_valor_total(%{valid?: false} = changeset), do: changeset
 
   defp maybe_put_valor_total(changeset) do
-    parcelas = get_change(changeset, :parcelas)
+    parcelas = get_change(changeset, :parcelas, [])
     total = calculate_total_amount_from_parcelas(parcelas, Decimal.new(0))
     put_change(changeset, :valor_total, total)
   end

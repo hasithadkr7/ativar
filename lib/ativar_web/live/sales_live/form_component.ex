@@ -17,7 +17,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               </.button>
             </div>
             <div class="right-group">
-              <.button style="primary" name="save" submit>
+              <.button style="primary" name="save" type="submit" disabled={@form.errors != []}>
                 <Lucideicons.save /> Gerar Venda
               </.button>
             </div>
@@ -58,14 +58,6 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                     field={f[:documento_exportador]}
                     errors={%{}}
                     label="Documentos ao Exportador"
-                  />
-                </div>
-                <div class="input-data">
-                  <.input
-                    type="text"
-                    field={f[:termo_pagamento]}
-                    errors={%{}}
-                    label="Termos de Pagamento"
                   />
                 </div>
               </div>
@@ -213,11 +205,10 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                   <div class="input-data">
                     <.input
                       type="select"
-                      field={f[:numero_parcela]}
-                      value={@form.params["numero_parcela"]}
+                      field={termo[:numero_parcelas]}
                       multiple={false}
                       prompt="Selecione"
-                      options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+                      options={Enum.to_list(1..20)}
                       errors={%{}}
                       label="Número de Parcelas"
                     />
@@ -226,13 +217,13 @@ defmodule AtivarWeb.SalesLive.FormComponent do
               </div>
             </div>
 
-            <div :if={@form.params["termo"]} class="new-sale-details">
-              <div class="text-wrapper">Descrições das Parcelas</div>
-
-              <div class="details">
-                <.inputs_for :let={parcela} field={termo[:parcelas]}>
+            <.inputs_for :let={parcela} field={termo[:parcelas]}>
+              <div class="new-sale-details">
+                <div class="text-wrapper">Descrições das Parcelas</div>
+                <div class="details">
+                  <span>HELLLO</span>
                   <div
-                    :for={numero_parcela <- 1..String.to_integer(@form.params["numero_parcela"])}
+                    :for={_ <- 1..5}
                     class="row"
                   >
                     <div class="input-data">
@@ -240,7 +231,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                         type="text"
                         field={parcela[:valor]}
                         errors={%{}}
-                        label={"Valor da Parcela #{numero_parcela}"}
+                        label={"Valor da Parcela #{0}"}
                       />
                     </div>
                     <div class="input-data">
@@ -259,10 +250,18 @@ defmodule AtivarWeb.SalesLive.FormComponent do
                         label="Data de Vencimento"
                       />
                     </div>
+                    <div class="input-data">
+                      <.input
+                        type="text"
+                        field={parcela[:comentario]}
+                        errors={%{}}
+                        label="Comentário"
+                      />
+                    </div>
                   </div>
-                </.inputs_for>
+                </div>
               </div>
-            </div>
+            </.inputs_for>
           </.inputs_for>
 
           <hr class="horizontal-divider" />
@@ -285,7 +284,7 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def update(%{sale: sale} = assigns, socket) do
-    changeset = Registro.changeset(sale, %{})
+    changeset = Registro.create_changeset(sale, %{})
 
     {:ok,
      socket
@@ -295,9 +294,12 @@ defmodule AtivarWeb.SalesLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"registro" => sale_params}, socket) do
+    IO.inspect(sale_params, label: "PARAMS")
+
     changeset =
       socket.assigns.sale
-      |> Registro.changeset(sale_params)
+      |> Registro.create_changeset(sale_params)
+      |> IO.inspect(label: "CAST")
       |> Map.put(:action, :validate)
 
     {:noreply, assign_form(socket, changeset)}
